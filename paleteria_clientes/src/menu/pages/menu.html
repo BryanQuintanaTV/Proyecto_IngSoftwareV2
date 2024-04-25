@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/indexP.css">
+    <link rel="stylesheet" href="../styles/menu.css">
+    <script defer src="../js/indexP.js" ></script>
+    <title>Cafe Menu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <script type="text/javascript" src="../../../../api/utils/solicitud_fetch.js"></script>
+
+    <style>
+        .oculto {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img id="logo" src="imagenes/logo.png" alt="">
+        <h1 style="color: #474740;" id="tituloMenu">MENÚ</h1>
+    </header> 
+    <br>
+    <h3>TENDENCIAS</h3><br><br>
+    <div class="card-group" id="Tendencias">
+    </div>
+    <br><br>
+    <h3>BEBIDAS</h3><br><br>
+    <div class="card-group" id="Bebidas">
+    </div><br><br>
+    <h3>COMIDA</h3><br><br>
+    <div class="card-group" id="Comida">
+    </div><br><br>
+    <h3>POSTRES</h3><br><br>
+    <div class="card-group" id="Postre">
+    </div>
+    
+    <script type="text/javascript" async src="../js/scriptPrincipal.js"></script>
+    <div style="margin-left: 88%; margin-bottom: 10px;"><button class="add-to-cartOrdenar" id="openDialogBtn"><i class="fas fa-cart-plus"></i> Ordenar</button></div>
+  
+
+  <dialog id="orderDialog" style="width:400px;">
+    <h2 id="msg_titulo">
+    Orden de compra
+    </h2>
+    <p id="dialogContent">
+ 
+    </p>
+    <center><button id="orderDeliveryBtn">Ordenar a domicilio</button>
+    <button id="orderPickupBtn">Ordenar para recoger</button></center>
+    <button id="cancelBtn">Cancelar</button>
+  </dialog>
+  
+
+  <!--Dialogs para el boton de ordenar a domicilio-->
+  <!-- Agregar un nuevo dialog para la información de entrega -->
+<dialog id="deliveryInfoDialog" style="width:400px;">
+    <div id="Tit_entrega"><h2>Información de entrega</h2></div>
+    <div class="datosentrega"><label for="calle">Calle:</label> 
+    <input type="text" id="calle" required></div>
+    <br>
+    <div class="datosentrega"><label for="numero">Número:</label> 
+    <input type="text" id="numero" required></div>
+    <br>
+    <div class="datosentrega"><label for="colonia">Colonia:</label> 
+    <input type="text" id="colonia" required></div>
+    <br>
+    <div class="datosentrega"><label for="codigoPostal">Código Postal:</label>
+    <input type="text" id="codigoPostal" required></div>
+    <br>
+   <center> <button id="confirmDeliveryBtn">Confirmar Pedido</button>
+    <button id="cancelDeliveryBtn">Cancelar</button> </center>
+</dialog>
+
+<!-- Agregar un nuevo dialog para la confirmación del pedido a domicilio -->
+<dialog id="deliverySuccessDialog" style="width:400px;">
+    <h2>Pedido a domicilio con éxito</h2>
+    <p>¡Tu pedido se ha realizado con éxito y será entregado pronto!</p>
+    <center><button id="closeDeliverySuccessBtn" class="close-dialog">Cerrar</button></center>
+</dialog>
+
+<!-- Agregar un nuevo dialog para la confirmación de cancelar el pedido -->
+<dialog id="cancelConfirmationDialog" style="width:400px;">
+    <h2>Confirmación de cancelación</h2>
+    <p>¿Estás seguro de cancelar el pedido?</p>
+    <center><button id="confirmCancelBtn">Sí</button>
+    <button id="denyCancelBtn">No</button></center>
+</dialog>
+
+<!--*****Dialogs de el boton de recoger *********************-->
+
+<!-- Agregar un nuevo dialog para la confirmación de recoger el pedido -->
+<dialog id="pickupConfirmationDialog" style="width:400px;">
+    <h2>Confirmación para recoger</h2>
+    <p>¿Estás seguro de confirmar para recoger tu pedido?</p>
+    <center><button id="confirmPickupBtn">Sí</button>
+    <button id="denyPickupBtn">No</button></center>
+</dialog>
+
+<!-- Agregar un nuevo dialog para la confirmación del pedido a recoger -->
+<dialog id="pickupSuccessDialog" style="width:400px;">
+    <h2>Pedido a recoger con éxito</h2>
+    <p>Tu pedido estará listo para ser recogido en 20 minutos.</p>
+    <center><button id="closePickupSuccessBtn" class="close-dialog">Cerrar</button></center>
+</dialog>
+
+<form id="datosOrdenes" class="oculto"></form>
+<form id="datosProductos" class="oculto"></form>
+
+
+
+  
+
+  <!-- <dialog id="orderDialog">
+    <div id="dialogContent">
+         Contenido del cuadro de diálogo aquí 
+    </div>
+    <button id="cancelBtn">Cancelar</button>
+    <button id="closeDialogBtn">Cerrar</button>
+</dialog>-->
+
+
+
+
+ <!-- <script>
+    // Obtener referencias a los elementos del DOM
+    var openDialogBtn = document.getElementById("openDialogBtn");
+    var closeDialogBtn = document.getElementById("cancelarBtn");
+    var orderDialog = document.getElementById("orderDialog");
+    var closeDialogBtn = document.getElementById("ordenarBtn");
+
+    // Abrir el cuadro de diálogo al hacer clic en el botón
+    openDialogBtn.addEventListener("click", function () {
+        orderDialog.showModal();
+    });
+
+    // Cerrar el cuadro de diálogo al hacer clic en el botón "Cerrar"
+    closeDialogBtn.addEventListener("click", function () {
+        orderDialog.close();
+    });
+</script>-->
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/js/all.min.js"></script>
+   
+    <div id="sidebar" class="sidebar">
+        <a href="#" class="boton-cerrar" onclick="ocultar()"><img src="boton.png""></a>
+        <ul class="menu">
+            <li><a href="http://copacabana.com/">Café</a></li>
+            <li><a href="http://copacabana.com/Menu/menu.html">Menu</a></li>
+            <li><a href="http://copacabana.com/Reservaciones/reservaciones.html">Reservaciones</a></li>
+            <li><a href="http://copacabana.com/Mis Pedidos/misPedidos.html">Mis pedidos</a></li>
+        </ul>
+    </div>
+
+    <div id="contenido" class="sidebar2">
+        <a id="abrir" class="abrir-cerrar" href="javascript:void(0)" onclick="mostrar()" ><img src="boton.png" alt=""></a>
+    </div>
+    
+    <script src="../js/menu2.js"></script>
+    
+</body>
+
+</html>
