@@ -1,0 +1,68 @@
+#Pedidos{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "a b";
+}
+#PedidosRecoger{
+    grid-area: a;
+}
+#PedidosDom{
+    grid-area: b;
+}
+.Pedidos{
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    background-color: #b4876b;
+    border-radius: 40px;
+    margin: 20px;
+    padding: 20px 20px 20px 20px;
+}
+.Pedido{
+    display: flex;
+    align-items: center;
+    background-color: #bf9b84;
+    border-radius: 40px;
+    min-width: 300px;
+    min-height: 60px;
+    max-height: 100px;
+    margin: 20px;
+    padding: 20px 20px 20px 20px;
+}
+.imgP{
+    float: left;
+    height: 40px;
+}
+.btnImp{
+    margin-top: auto;
+    margin-right: auto;
+    height: 70px;
+    image-rendering: optimizeQuality;
+    image-rendering: -webkit-optimize-contrast;
+}
+button{
+    border-radius: 10px;
+    border: none;
+    background: none;
+    padding: 0;
+}
+button:hover{
+    background-color: white;
+}
+
+.InfoPedido{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    margin: 20px;
+}
+h2{
+    color: #5a5a49;
+}
+body{
+    background-image:url("../fondo.jpeg");
+    background-size: auto; /* Puedes ajustar esto según tus preferencias */
+    background-position: center; /* Puedes ajustar esto según tus preferencias */
+    background-repeat: repeat;
+}

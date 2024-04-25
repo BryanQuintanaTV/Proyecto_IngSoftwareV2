@@ -1,0 +1,52 @@
+.Pedido{
+    display: flex;
+    align-items: center;
+    background-color: #bf9b84;
+    border-radius: 40px;
+    min-width: 300px;
+    min-height: 60px;
+    max-height: 100px;
+    margin: 20px;
+    padding: 20px 20px 20px 20px;
+}
+.imgP{
+    float: left;
+    height: 40px;
+}
+.btnExpand{
+    margin-top: auto;
+    margin-right: auto;
+    height: 50px;
+    image-rendering: optimizeQuality;
+    image-rendering: -webkit-optimize-contrast;
+    
+}
+button{
+    border-radius: 50px;
+    border: none;
+    background: none;
+    padding: 0;
+    
+}
+button:hover{
+    background-color: white;
+      
+}
+
+.InfoPedido{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    margin: 20px;
+}
+body {
+    font-family: 'Satoshi variable', sans-serif;
+    display: grid;
+    place-items: center;
+    background-image:url("../fondo.jpeg");
+    background-size: auto; /* Puedes ajustar esto según tus preferencias */
+    background-position: center; /* Puedes ajustar esto según tus preferencias */
+    background-repeat: repeat;
+
+}

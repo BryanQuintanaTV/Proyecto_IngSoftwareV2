@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Producto</title>
+  <script src="../../../../api/utils/solicitud_fetch.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #dialog-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    #dialog-box {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+    }
+
+    #close-btn {
+      background-color: #f44336;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<button id="open-btn">Abrir Formulario</button>
+
+<div id="dialog-overlay">
+  <div id="dialog-box">
+    <h2>Formulario de Producto</h2>
+    <label for="product-type">Tipo de Producto:</label>
+    <select id="product-type">
+      <option value="Bebida">Bebida</option>
+      <option value="Comida">Comida</option>
+      <option value="Postre">Postre</option>
+    </select>
+
+    <label for="product-name">Nombre:</label>
+    <input type="text" id="product-name" required>
+
+    <label for="product-price">Precio:</label>
+    <input type="number" id="product-price" required>
+
+    <label for="product-image">Imagen</label>
+    <input type="file" id="product-image" accept="image/*" required>
+
+    <button id="submit-btn">Enviar</button>
+    <button id="close-btn">Cerrar</button>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+ $(document).ready(function() {
+  $("#open-btn").click(function() {
+    $("#dialog-overlay").fadeIn();
+  });
+
+  $("#close-btn").click(function() {
+    $("#dialog-overlay").fadeOut();
+  });
+
+  $("#submit-btn").click(function() {
+
+    // Obtener los valores del formulario
+    const productType = $("#product-type").val();
+    const productName = $("#product-name").val();
+    const productPrice = $("#product-price").val();
+    //const productImage = $("#product-image")[0].files[0];
+    const productImageInput = $("#product-image")[0]; // Obtener el elemento input de tipo file
+    const productImage = productImageInput.files[0]; // Obtener el archivo seleccionado
+
+    function obtenerMayusculas(s) {
+    // Utiliza una expresión regular para eliminar caracteres que no son letras
+    // y luego convierte la cadena resultante a mayúsculas
+    return s.replace(/[^A-Za-z]/g, '').toUpperCase();
+     } 
+
+/*********/
+
+//Realizacion del GET para traer el mas grande y despues Realizar el post
+// Se realizo todo adentro del get ya que es asincrono y no me permitia sacar el numero mas alto del obtener
+
+
+// Función para obtener el número más alto de id_producto
+async function obteneridproducto() {
+  let url = "http://apicopacabana.com/productos?columnas=*";
+  let init = {
+    method: 'get',
+    header: {
+      'Content-Type': 'application/json'
+    }
+  };
+
+  let objdatos = await fetchSynchronousGET(url, init);
+
+  if (objdatos.status == 200) {
+    let datos = objdatos.datos;
+    let ids = datos.map(element => element.id_producto);
+    return Math.max(...ids) + 1;
+  }
+}
+
+// Función para obtener el número y crear la estructura productData
+async function obtenerYCrearProductData() {
+  // Obtener el número más alto de id_producto
+  const idProducto = await obteneridproducto();
+
+  // Resto del código para obtener los valores del formulario
+  const productType = $("#product-type").val();
+  const productName = $("#product-name").val();
+  const productPrice = $("#product-price").val();
+  const productImageInput = $("#product-image")[0];
+  const productImage = productImageInput.files[0];
+
+  // Crear la estructura productData con el número obtenido
+  const productData = {
+    id_producto: idProducto,
+    tipo_producto: productType,
+    descripcion_producto: productName,
+    precio_producto: productPrice,
+    img_producto: 'http://copacabana.com/Menu/imagenes/MENU/' + obtenerMayusculas(productType) + '/' + productImage.name,
+    existencia_producto: 0,
+    vendidos_producto: 0,
+  };
+
+  // Configurar las opciones de la solicitud POST
+  const requestOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(productData),
+  };
+
+  // Realizar la solicitud POST a la URL deseada
+  const apiUrl = 'http://apicopacabana.com/productos'; // Reemplaza con la URL de tu API
+  fetchSynchronousPOST(apiUrl, requestOptions)
+    .then(response => {
+      // Manejar la respuesta de la solicitud POST
+      console.log(response);
+      // Puedes realizar acciones adicionales aquí según la respuesta
+    })
+    .catch(error => {
+      // Manejar errores de la solicitud POST
+      console.error('Error al enviar la solicitud POST:', error);
+    });
+}
+
+// Llamar a la función para obtener y crear productData
+obtenerYCrearProductData();
+
+//METODO POST SOLAMENTE
+
+  /*
+    // Crear un objeto con la estructura deseada
+    const productData = {
+      
+      id_producto: 13,
+      tipo_producto: productType, // Cambiado a 'type' para demostración
+      descripcion_producto: productName, // Cambiado a 'name' para demostración
+      precio_producto: productPrice, // Ajustado al nombre de la columna en tu base de datos
+      // Puedes agregar más campos según tus necesidades
+      img_producto: 'http://bluehour.com/Menu/imagenes/MENU/'+obtenerMayusculas(productType)+'/'+ productImage.name,
+      existencia_producto: 0,
+      vendidos_producto: 0,
+
+
+    };
+
+    // Configurar las opciones de la solicitud POST
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(productData),
+    };
+
+    // Realizar la solicitud POST a la URL deseada
+    const apiUrl = 'http://apibluehour.com/productos'; // Reemplaza con la URL de tu API
+    fetchSynchronousPOST(apiUrl, requestOptions)
+      .then(response => {
+        // Manejar la respuesta de la solicitud POST
+        console.log(response);
+        // Puedes realizar acciones adicionales aquí según la respuesta
+      })
+      .catch(error => {
+        // Manejar errores de la solicitud POST
+        console.error('Error al enviar la solicitud POST:', error);
+      });*/
+
+
+  });
+});
+
+
+</script>
+
+</body>
+</html>

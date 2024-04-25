@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orden</title>
+    
+    <script defer src="../js/indexP.js"></script>
+
+    <!-- Script para la solicitud fetch -->
+    <script src="../../../../api/utils/solicitud_fetch.js"></script>
+    <link rel="stylesheet" href="../assets/styles/indexP.css">
+    <link rel="stylesheet" href="../assets/styles/orden.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Include Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+</head>
+<body>
+      <header>
+          <img id="logo" src="imagenes/logo.png" alt="">
+          <h1 style="color: #474740;" id="tituloMenu">ORDEN</h1>
+      </header>
+
+      <div class="container">
+      <aside class="apagar">
+        <label for="mesas" style="color: #474740;"><b>MESA:</b></label>
+        <select id="mesas" name="mesas" class="selectestilo">
+            <option value="mesa1">MESA 1</option>
+            <option value="mesa2">MESA 2</option>
+            <option value="mesa3">MESA 3</option>
+            <option value="mesa4">MESA 4</option>
+            <option value="mesa5">MESA 5</option>
+            <option value="mesa6">MESA 6</option>
+            <option value="mesa7">MESA 7</option>
+            <option value="mesa8">MESA 8</option>
+            <option value="mesa9">MESA 9</option>
+           <option value="mesa10">MESA 10</option>
+           <option value="mesa11">MESA 11</option>
+           <option value="mesa12">MESA 12</option>
+           <option value="mesa13">MESA 13</option>
+           <option value="mesa14">MESA 14</option>
+           <option value="mesa15">MESA 15</option>
+           <option value="mesa16">MESA 16</option>
+           <option value="mesa17">MESA 17</option>
+           <option value="mesa18">MESA 18</option>
+           <option value="mesa19">MESA 19</option>
+        </select>
+        <br>
+        <br>
+        <div id="mesaInfo">
+        <p style="color: #474740;"><b> <span id="selectedMesa"></b></span></p>
+        <!--    <p style="color: #474740;">Total a pagar: $<span id="totalPagar">0</span></p>
+        </div>
+        <br><br><br>
+        <label for="checkboxParaLlevar" style="color: #474740;">¿Es para llevar?</label>
+        <input type="checkbox" id="checkboxParaLlevar">
+        <br>
+        <button onclick="confirmar()" id="confirmarBtn">Confirmar</button><br><br>
+        <button onclick="cancelar()" id="cancelarBtn">Cancelar</button><br><br>
+        <button onclick="imprimirComanda()" id="imprimirBtn">Imprimir Comanda</button> -->
+
+        <br>
+        <ul id="listaProductos"></ul>
+        <br>
+        <p style="color: #30302b;">Total a pagar: <span id="totalPagar">0.00</span></p>
+        </div>
+        
+        <input type="checkbox" id="checkboxParaLlevar"> Para llevar
+        <br>
+        <button id="confirmarBtn" onclick="confirmar()">Confirmar</button><br><br>
+        <button id="cerrarMesaBtn" onclick="cerrarMesa()">Cerrar Mesa</button><br><br>
+        <button id="cancelarBtn" onclick="cancelar()">Cancelar</button><br><br>
+        <button id="imprimirBtn" onclick="imprimirComanda()">Imprimir Comanda</button>
+      </aside>
+      
+
+
+    
+    <div class="contenido">
+     <h3>TENDENCIAS</h3>
+    <div class="cards-container" id="Tendencias">
+    </div>
+    <br>
+    <h3>BEBIDAS</h3>
+    <div class="cards-container" id="Bebidas"> 
+    </div>
+    <br>
+    <h3>COMIDA</h3>
+    <div class="cards-container" id="Comida">
+    </div>
+    <br>
+    <h3>Postre</h3>
+    <div class="cards-container" id="Postre">
+    </div>
+
+</div>
+</div>
+
+<form id="datosOrdenes"></form>
+<form id="datosProductos"></form>
+
+
+  <div id="sidebar" class="sidebar">
+    <a href="#" class="boton-cerrar" onclick="ocultar()"><img src="boton.png" alt=""></a>
+    <ul class="menu">
+        <li><a href="../pages/orden.html">Ordenes</a></li>
+        <li><a href="../../comandas/pages/comandas.html">Comandas</a></li>
+        
+    </ul>
+</div>
+
+<div id="contenido" class="sidebar2">
+    <a id="abrir" class="abrir-cerrar" href="javascript:void(0)" onclick="mostrar()"><img src="boton.png" alt=""></a>
+</div>
+
+<script src="../js/scriptPrincipal.js"></script>
+<script src="../js/infoorden2.js"></script>
+</body>
+</html>

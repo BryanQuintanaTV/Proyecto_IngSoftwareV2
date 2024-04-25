@@ -1,0 +1,207 @@
+/* Implementacion del titulo de la pagina y logo mas formato de la pagina*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#logo {
+    height: 120px;
+    left: 30px;
+    vertical-align: middle;
+    float: left;
+    margin-top: -40px;
+}
+
+header {
+    background-color: #bf9b84;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    width: 100%;
+    height: 65px;
+    padding: 20px;
+    /*position: sticky;*/
+    top: 0;
+}
+
+h3 {
+    color: #474740;
+    text-align: center;
+}
+
+body {
+    font-family: 'Satoshi variable', sans-serif;
+    display: grid;
+    place-items: center;
+    background-image:url("../fondo.jpeg");
+    background-size: auto; /* Puedes ajustar esto según tus preferencias */
+    background-position: center; /* Puedes ajustar esto según tus preferencias */
+    background-repeat: repeat;
+
+}
+
+#tituloMenu {
+    margin-right: 120px;
+}
+
+/*---------------------------------------------------------------------*/
+/*Implementacion para las imagenes de tendencia, bebida y comida*/
+
+.cards-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    position: relative;
+    margin-top: 20px;
+}
+
+.card {
+    width: 170px;
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to right, #dddfac, #d0b97a);
+    padding: 20px;
+    position: relative;
+    border-radius: 20px;
+    border: 4px solid rgb(77, 0, 0);
+   /* transition: 0.4s ease-in-out transform, 0.4s ease-in-out box-shadow;*/
+    overflow: hidden;
+    /*transform: translate(-8px, -16px) rotate(3deg);*/
+}
+
+
+.card:hover {
+    transform: none;
+    box-shadow: 0 20px 40px -10px rgba(90, 81, 81, 0.5);
+} 
+
+.product-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;                  /* Adjust this height as needed */
+  overflow: hidden;
+}
+.product-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;          /* Keeps the image inside the container */
+}
+
+.product-name {
+  font-weight: bold;
+  margin-top: 16px;
+  text-align: center;
+  color: #333;
+}
+
+.product-price {
+    margin-top: 16px;
+    text-align: center;
+    color: #333;
+}
+
+.add-to-cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: #e4a110; /* Match the card's color */
+    color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, opacity 0.3s;
+}
+
+.add-to-cart:hover {
+    background-color: #fcbf49; /* Change color on hover */
+    transform: scale(1.2);
+    opacity: 0.8;
+}
+
+/*---------------------------------------------------------------------*/
+/*Implementacion para todo el menu estatico que esta en la parte derecha*/
+
+.container {
+    display: grid;
+    grid-template-areas: "section aside";
+  
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto;
+    
+  }
+.apagar{
+    grid-area: aside;
+   /* width:30%;*/
+    height: auto;
+    background-color: rgb(224, 205, 165);
+    /* Esto lo mantendra en su sitio */
+    position: relative;
+    top: 0;
+    right: 0;
+    padding: 30px;
+    text-align: center;
+  }
+  
+  .contenido{
+    grid-area: section;
+    /*width: 70%;*/
+    height: auto;
+    background-color: none;
+    /* Esto equilibria lo del aside */
+    position: relative;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    
+  }
+
+.selectestilo {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #474740;
+}
+
+option {
+    font-size: 16px;
+    color: #474740;
+}
+#mesaInfo {
+    display: none;
+    margin-bottom: 20px;
+}
+
+#checkboxParaLlevar {
+    margin-bottom: 20px;
+}
+
+button {
+    margin-right: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgb(224, 205, 165); /* Color café */
+    color: #474740; /* Texto en blanco para contraste */
+    cursor: pointer;
+}
+p,label{
+    font-family: "Segoe UI", sans-serif;
+    font-size:19px;
+    
+}
+.quitarBtn {
+    display: inline-block;
+    cursor: pointer;
+    color: red;
+    margin-left: 10px;
+    background-image: url('../../../../../assets/icons/delete_icon.svg'); /* URL de la imagen del icono */
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+  

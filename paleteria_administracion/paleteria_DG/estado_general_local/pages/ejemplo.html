@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../../../api/utils/solicitud_fetch.js"></script>
+</head>
+<body>
+    
+<script>
+
+// Función para obtener el número más alto de id_producto
+async function obteneridproducto() {
+  let url = "http://apicopacabana.com/productos?columnas=*";
+  let init = {
+    method: 'get',
+    header: {
+      'Content-Type': 'application/json'
+    }
+  };
+
+  let objdatos = await fetchSynchronousGET(url, init);
+
+  if (objdatos.status == 200) {
+    let datos = objdatos.datos;
+    let ids = datos.map(element => element.id_producto);
+    return Math.max(...ids) + 1;
+  }
+}
+
+// Llamar a la función y asignar el resultado a otra variable
+let otraVariableGlobal;
+(async () => {
+  otraVariableGlobal = await obteneridproducto();
+})();
+
+
+
+
+    </script>
+</body>
+</html>
