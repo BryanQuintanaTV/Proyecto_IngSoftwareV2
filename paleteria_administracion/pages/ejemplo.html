@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+const obtenerIdProductoMaximo = async () => {
+  const apiUrl = 'http://apicopacabana.com/productos'; // Reemplaza con la URL de tu API
+
+  try {
+    // Realizar la solicitud GET para obtener los productos
+    const productos = await fetchSynchronousGET(apiUrl);
+
+    // Verificar que se obtuvieron datos
+    if (productos && productos.length > 0) {
+      // Extraer los id_producto y calcular el máximo
+      const idsProductos = productos.map(producto => producto.id_producto);
+      const idProductoMaximo = Math.max(...idsProductos);
+
+      // Imprimir el resultado
+      console.log('El id_producto más alto es:', idProductoMaximo);
+    } else {
+      console.log('No se encontraron productos.');
+    }
+  } catch (error) {
+    // Manejar errores de la solicitud GET
+    console.error('Error al obtener los productos:', error);
+  }
+};
+
+// Llamar a la función para obtener el id_producto máximo
+obtenerIdProductoMaximo();
+
+    </script>
+</body>
+</html>
