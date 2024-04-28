@@ -6,6 +6,9 @@ Proyecto Ingeniería de Software
 > Para que funcione la api y la página 
 > 
 > Se debe de configurar
+
+> [!IMPORTANT]
+> $\color{red}{\textsf{Se ha modificado lo que se tiene que poner en el archivo }}$ $\color{orange}{\textsf{httpd-vhosts}}$ $\color{red}{\textsf{para hacer funcionar las rutas relativas, asi como se han agregado cambios al código para que pueda funcionar}}$
 ## XAMPP
 
    - 📂xampp<br>
@@ -26,12 +29,12 @@ En el archivo de 📄httpd-vhosts poner lo siguiente
 
 <VirtualHost *:80>
     ServerName copacabana.com
-    DocumentRoot "C:/xampp/htdocs/proyecto_paleteria/paleteria_clientes/pages/index.html"
+    DocumentRoot "C:/xampp/htdocs/xampp/Carpetas-proyecto-paleteria"
 </VirtualHost>
 
 <VirtualHost *:80>
     ServerName admincopacabana.com
-    DocumentRoot "C:/xampp/htdocs/proyecto_paleteria/paleteria_administracion/pages/index.html"
+    DocumentRoot "C:/xampp/htdocs/xampp/Carpetas-proyecto-paleteria"
 </VirtualHost>
 
 ```
@@ -49,5 +52,5 @@ En el archivo de 📄hosts poner lo siguiente
 127.0.0.1	   admincopacabana.com
 127.0.0.1	   apicopacabana.com
 ```
-> [!CAUTION]
-> La base de datos a utilizar esta almacenada en la nube y no es la versión final, por lo que la base de datos será modificada en su totalidad
+> [!NOTE]
+> La base de datos a utilizar ya esta en su versión utilizable
