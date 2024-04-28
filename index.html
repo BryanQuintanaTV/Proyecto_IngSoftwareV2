@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redireccionando...</title>
+</head>
+<body>
+    
+    
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+    <script>
+        window.onload = function() {
+            var dominio = window.location.hostname;
+            var destino;
+    
+            // Comprobamos el dominio y establecemos el destino de la redirección
+            if (dominio === 'copacabana.com') {
+                destino = 'paleteria_clientes/pages/index.html';
+            } else if (dominio === 'admincopacabana.com') {
+                destino = 'paleteria_administracion/pages/index.html';
+            } else {
+                destino = 'https://otra-redireccion.com';
+            }
+    
+            // Redireccionamos al destino después de 3 segundos (3000 milisegundos)
+            setTimeout(function() {
+                window.location.href = destino;
+            }, 3000);
+        };
+    </script>
+</body>
+</html>
