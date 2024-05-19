@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Styles for the page -->
+    <link rel="stylesheet" href="../assets/styles/general.css">
+    <link rel="stylesheet" href="../assets/styles/header.css">
+    <link rel="stylesheet" href="../assets/styles/grid.css">
+    <link rel="stylesheet" href="../assets/styles/orden_menu.css">
+    <link rel="stylesheet" href="../assets/styles/overlay.css">
+    <!-- End of the styles for the page -->
+    <!-- Title for the page -->
+    <title>Orden</title>
+</head>
+<body>
+
+    
+    <!-- div that contains all the web page elements -->
+    <div class="contenedor">
+
+        <section class="layout">
+            <!-- div for the grid position for the header -->
+            <div class="header_grid">
+                <!-- Header content -->
+                <header>
+                    <!-- div for the products categories and can be sorted later  -->
+                    <div class="categorias" id="categorias">
+                        <a href="#" class="activo">Todos</a>
+                        <!-- href that shows the products -->
+                        <a href="#">Bebidas</a>
+                        <!-- href that shows only all the beverages -->
+                        <a href="#">Helados</a>
+                        <!-- href that shows only all the frozen desserts -->
+                        <a href="#">Snacks</a>
+                        <!-- href that shows only all the snacks -->
+                        <a href="#">Otros</a>
+                        <!-- href that shows only the products of other category -->
+                    </div>
+                </header>
+            </div>
+
+
+            <div class="menu_grid">
+                
+            <!-- div for the grid position for the menu -->
+
+                <section class="grid" id="grid">
+                    <!-- div for the products that are going to be displayed -->
+
+                    <!-- ****************************** -->
+                    <!-- Example of the content that is going to be created on the javascript "" -->
+                    <!-- <div class="item" 
+                         data-categoria="cafes"
+                         data-idProducto=""
+                    >
+                        <div class="item-contenido">
+                            <p class="articulo_name">Caramel Frappuccino</p>
+                            <p class="articulo_desc">Frappuccino de caramelo</p>
+                            <p class="articulo_precio">$7.29</p>
+                            <button class="articulo_button" id="articulo_button">+</button>
+                            <img class="articulo" src="../assets/images/MENU/BEBIDAS/Frappuccino caramelo.webp" alt="">
+                            <img class="fondo" src="../../../../assets/images/menu_container.svg" alt="">
+                        </div>
+                    </div> -->
+                </section>
+                <div class="loader-container" id="loader-container">
+                    <div class="loader"></div><br>
+                    <p class="loader-text">Cargando Productos...</p>
+                </div>
+            </div>
+
+            <div class="orden_grid">
+                <!-- div for the grid position for the ordered prodcuts -->
+                <section class="orden" id="orden">
+                    <div class="orden_div">
+                        <p class="orden_titulo">Resumen Orden</p>
+                        <!-- title -->
+                        <hr class="orden_linea"> 
+                        <div class="orden_detalle">
+                            <!-- div for the ordered products -->
+                            <!-- TODO The elements must be created in the JS and must work with the api, to POST on "ordendetalles" table each product on the list-->
+                            <div class="orden_detalle_articulo">
+                                <p class="articulo_name">Caramel Frappuccino</p>
+                                <p class="articulo_cantidad">x<span>1</span></p>
+                                <p class="articulo_extras activo">No extras</p>
+                                <button class="articulo_btn"><img src="../../../../assets/icons/delete_icon.svg" alt=""></button>
+                                <p class="articulo_total">$<span>7.99</span></p>
+                                <img src="../../../../assets/images/orden_detail.svg" alt="">
+                            </div>
+                            <div class="orden_detalle_articulo">
+                                <p class="articulo_name">Caramel Frappuccino</p>
+                                <p class="articulo_cantidad">x<span>1</span></p>
+                                <button class="articulo_btn"><img src="../../../../assets/icons/delete_icon.svg" alt=""></button>
+                                <p class="articulo_total">$<span>7.99</span></p>
+                                <img src="../../../../assets/images/orden_detail.svg" alt="">
+                            </div>
+                            <div class="orden_detalle_articulo">
+                                <p class="articulo_name">Caramel Frappuccino</p>
+                                <p class="articulo_cantidad">x<span>1</span></p>
+                                <button class="articulo_btn"><img src="../../../../assets/icons/delete_icon.svg" alt=""></button>
+                                <p class="articulo_total">$<span>7.99</span></p>
+                                <img src="../../../../assets/images/orden_detail.svg" alt="">
+                            </div>
+                            <div class="orden_detalle_articulo">
+                                <p class="articulo_name">Caramel Frappuccino</p>
+                                <p class="articulo_cantidad">x<span>1</span></p>
+                                <button class="articulo_btn"><img src="../../../../assets/icons/delete_icon.svg" alt=""></button>
+                                <p class="articulo_total">$<span>7.99</span></p>
+                                <img src="../../../../assets/images/orden_detail.svg" alt="">
+                            </div>
+                            <div class="orden_detalle_articulo">
+                                <p class="articulo_name">Caramel Frappuccino</p>
+                                <p class="articulo_cantidad">x<span>1</span></p>
+                                <button class="articulo_btn"><img src="../../../../assets/icons/delete_icon.svg" alt=""></button>
+                                <p class="articulo_total">$<span>7.99</span></p>
+                                <img src="../../../../assets/images/orden_detail.svg" alt="">
+                            </div>
+                            <div class="orden_detalle_articulo">
+                                <p class="articulo_name">Caramel Frappuccino</p>
+                                <p class="articulo_cantidad">x<span>1</span></p>
+                                <button class="articulo_btn"><img src="../../../../assets/icons/delete_icon.svg" alt=""></button>
+                                <p class="articulo_total">$<span>7.99</span></p>
+                                <img src="../../../../assets/images/orden_detail.svg" alt="">
+                            </div>
+                            <div class="orden_detalle_articulo">
+                                <p class="articulo_name">Caramel Frappuccino</p>
+                                <p class="articulo_cantidad">x<span>1</span></p>
+                                <button class="articulo_btn"><img src="../../../../assets/icons/delete_icon.svg" alt=""></button>
+                                <p class="articulo_total">$<span>7.99</span></p>
+                                <img src="../../../../assets/images/orden_detail.svg" alt="">
+                            </div>
+                        </div>
+                        <!-- TODO must show the order total that works with JS and the api, to POST on the "orden" table -->
+                        <p class="orden_total">
+                            Total Orden: $<span>50.39</span>
+                        </p>
+                        <div class="orden_botones">
+                            <!-- TODO the button "confirmar" must POST the correct information into the "orden & ordendetalles" tables -->
+                            <button class="orden_confirmar">Confirmar</button>
+                            <!-- TODO the button "cancelar" must cancel the order that it was created locally (nothing was inserted into the db) -->
+                            <button class="orden_cancelar">Cancelar</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+          </section>
+
+
+        <section class="overlay" id="overlay">
+            <div class="screen">
+                <div class="contenedor-img">
+                    <button id="btn-cerrar-popup"><img src="../../../../assets/icons/close_icon.svg" alt=""></button>
+                    <img class="fondo_overlay" src="../assets/images/MENU/BEBIDAS/Frappuccino caramelo.webp" alt="" height="400px">
+                    
+                    <!-- It shows all the posible options, but in JS must show only the available with the product -->
+                    <div class="overlay_opciones">
+                        <button id="overlay_opciones_tipo">Tipos / Sabores</button>
+                        <button id="overlay_opciones_add">Add / <br> Extra</button>
+                        <button id="overlay_opciones_no">No</button>
+                        <button id="overlay_opciones_size">Tamaño</button>
+                    </div>
+
+                    <!-- TODO In the div it must show all the options available on the option (tipos/sabores || add/extra || No || tamaño) using the JS-->
+                    <div class="overlay_opciones_pantalla" id="overlay_opciones_pantalla">
+                        
+                    </div>
+
+                    <!-- It shows the quantity of the product that the client is going to buy-->
+                    <div class="overlay_cantidades">
+                        <p>Cantidad</p>
+                        <!-- TODO it must select the quantity of the selected product -->
+                        <div class="overlay_cantidades_btn">
+                            <!-- TODO double click must restart the quantity of the selected product to 1 -->
+                            <button value="0">0</button>
+                            <button value="1">1</button>
+                            <button value="2">2</button>
+                            <button value="3">3</button>
+                            <button value="4">4</button>
+                            <button value="5">5</button>
+                            <button value="6">6</button>
+                            <button value="7">7</button>
+                            <button value="8">8</button>
+                            <button value="9">9</button>
+                        </div>
+                    </div>
+
+                    <!-- TODO it must show all about the product that is going to be added, if it has (tipo/sabor || add/extra || No || tamaño) -->
+                    <div class="overlay_resumen">
+                        <!-- FIXME needs to show one element per line -->
+                        <p class="resumen_titulo">Resumen:</p> <br>
+                    </div>
+                </div>
+                    <!-- TODO Delete this element and the css of the element -->
+                    <p class="descripcion"></p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Script for the fetch -->
+    <script src="../../../../api/utils/solicitud_fetch.js" defer></script>
+    <!-- Script that brings the library for the animations on the menu products -->
+    <script src="../../../../lib/node_modules/web-animations-js/web-animations.min.js" defer></script>
+    <!-- Script that brings the library for the grid and functionality on the menu products -->
+    <script src="../../../../lib/node_modules/muuri/dist/muuri.min.js" defer></script>
+    <!-- Script for the page -->
+    <script src="../js/idea.js" defer></script>
+    <!-- Script that brings sweetalerts2 library -->
+    <script src="../../../../lib/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+
+</body>
+</html>

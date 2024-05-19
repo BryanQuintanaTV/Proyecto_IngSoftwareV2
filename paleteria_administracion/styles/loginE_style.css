@@ -16,7 +16,7 @@ body{
 	vertical-align: middle;
 	min-height: 100vh;
 	font-family: 'Jost', sans-serif;
-	background-image:url("../fondo.jpeg");
+	background-image:url("../../assets/images/fondo.jpeg");
     background-size: auto; /* Puedes ajustar esto según tus preferencias */
     background-position: center; /* Puedes ajustar esto según tus preferencias */
     background-repeat: repeat;

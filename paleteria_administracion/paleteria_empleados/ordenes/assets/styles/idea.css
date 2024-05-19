@@ -1,0 +1,219 @@
+/* *******************
+       FONTS IMPORTS
+   ******************* */
+@font-face {
+    font-family: 'Poppins-SemiBold';
+    src: url('../../../../../assets/fonts/Poppins/Poppins-SemiBold.ttf') format('truetype');
+    font-weight: 600; /* Puedes ajustar el peso según sea necesario */
+    font-style: normal; /* O italic si es una versión itálica */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f3f3f3;
+}
+
+a {
+    text-decoration: none;
+}
+
+.contenedor {
+    width: 90%;
+    max-width: 800px;
+    margin: auto;
+}
+
+/* ====================
+           Header
+   ==================== */
+
+header{
+    padding: 40px 0;
+    margin-bottom: 40px;
+}
+
+header .categorias {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+header .categorias a {
+    color: #9B9B9B;
+    margin: 10px 20px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+header .categorias a.activo {
+    color: #000;
+}
+
+/* ====================
+        GRID
+   ==================== */
+
+.grid {
+   position: relative;
+   width: 100%;
+   opacity: 0;
+   transition: opacity 0.5s linear 1s;
+}
+
+.grid.imagenes-cargadas{
+    opacity: 1;
+}
+
+.grid .item {
+    /* background-color: aquamarine; */
+    position: absolute;
+    display: block;
+    padding: 0;
+    margin: 10px;
+    margin-bottom: 130px;
+    width: calc(33.333333% - 20px);
+}
+
+.grid .item-contenido {
+    position: relative;
+}
+
+/* .grid .item-contenido button {
+    position: relative;
+    bottom: 50px;
+    left: 90px;
+} */
+
+.grid .item img {
+    width: 100%;
+    vertical-align: top;
+}
+
+.grid .item .fondo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* width: 100%; */
+    /* cursor: pointer; */
+}
+
+.grid .item .articulo {
+    position: relative;
+    top: 30px;
+    left: 40px;
+    height: 162px;
+    width: 162px;
+    /* cursor: pointer; */
+    z-index: 1;
+}
+
+.grid .item .articulo_name {
+    position: absolute;
+    font-family: 'Poppins-SemiBold', sans-serif;
+    font-weight: 600;
+    font-size: 25;
+    color: #07143B;
+    bottom: -50px;
+    left: 10px;
+    z-index: 2;
+}
+
+.grid .item .articulo_desc {
+    position: absolute;
+    bottom: -80px;
+    left: 10px;
+    font-size: 10px;
+    color: #9B9B9B;
+    max-width: 150px;
+    word-wrap: break-word;
+    color: #000;
+    z-index: 2;
+}
+
+.grid .item .articulo_precio {
+    position: absolute;
+    font-family: 'Poppins-SemiBold', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    bottom: -110px;
+    left: 10px;
+    color: #EA6A12;
+    z-index: 2;
+}
+
+.grid .item .articulo_button {
+    position: absolute;
+    border: none;
+    border-radius: 20%;
+    cursor: pointer;
+    font-family: 'Poppins-SemiBold', sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+    background-color: #EA6A12;
+    color: white;
+    bottom: -110px;
+    right: 25px;
+    height: 41px;
+    width: 42px;
+    z-index: 2;
+    transition: background-color 0.3s ease;
+}
+
+.grid .item .articulo_button:hover {
+    background-color: #CD5D11;
+}
+
+/* ====================
+        Overlay
+   ==================== */
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;    
+    flex-direction: column;
+}
+
+.overlay.activo {
+    display: flex;
+}   
+
+.overlay .screen {
+    position: relative;
+    max-width: 100%;
+    height: 300px;
+    background-color: aqua;
+    z-index: 2;
+}
+
+.overlay img {
+    max-width: 100%;
+}
+
+.overlay .descripcion {
+    display: block;
+    background: #fff;
+    text-align: center;
+    margin-top: 5px;
+    border-radius: 10px;
+    max-width: 50%;
+}
+
+.contenedor-img {
+    width: 100%;
+    height: 100%;
+}   

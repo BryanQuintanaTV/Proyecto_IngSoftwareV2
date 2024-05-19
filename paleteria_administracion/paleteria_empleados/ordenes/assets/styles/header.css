@@ -1,0 +1,36 @@
+/* ====================
+           Header
+   ==================== */
+.header_grid {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 60%;
+    
+    background-color: #FAFAFA;
+}
+
+header{
+    padding: 40px 0;
+    margin-bottom: 40px;
+}
+
+header .categorias {
+    display: flex;
+    justify-content: center;
+    /* background-color: aqua; */
+    flex-wrap: wrap;
+    position: fixed;
+}
+
+header .categorias a {
+    color: #9B9B9B;
+    margin: 10px 20px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+header .categorias a.activo {
+    color: #000;
+}

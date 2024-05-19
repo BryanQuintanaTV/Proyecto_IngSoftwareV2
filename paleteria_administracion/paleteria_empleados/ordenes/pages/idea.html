@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../assets/styles/idea.css">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <div class="contenedor">
+
+        <header>
+
+            <div class="categorias" id="categorias">
+                <a href="#" class="activo">Todos</a>
+                <a href="#">Cafes</a>
+                <a href="#">Postres</a>
+                <a href="#">Snacks</a>
+                <a href="#">Otros</a>
+            </div>
+        </header>
+
+        <section class="grid" id="grid">
+            <div class="item" 
+                 data-categoria="cafes"
+                 data-descripcion="Cafe con caramelo"
+            >
+                <div class="item-contenido">
+                    <p class="articulo_name">Caramel Frappuccino</p>
+                    <p class="articulo_desc">Frappuccino de caramelo</p>
+                    <p class="articulo_precio">$7.29</p>
+                    <button class="articulo_button">+</button>
+                    <img class="articulo" src="../assets/images/MENU/BEBIDAS/Frappuccino caramelo.webp" alt="">
+                    <img class="fondo" src="../../../../assets/images/menu_container.svg" alt="">
+                    <!-- <button>COMPRAR</button> -->
+                </div>
+            </div>
+
+            <div class="item" 
+                 data-categoria="otros" 
+                 data-descripcion="Limonada"
+            >
+                <div class="item-contenido">
+                    <p class="articulo_name">Limonada</p>
+                    <p class="articulo_desc">Limonada de limon xd</p>
+                    <p class="articulo_precio">$5.29</p>
+                    <button class="articulo_button">+</button>
+                    <img class="articulo" src="../assets/images/MENU/BEBIDAS/Limonada.png" alt="">
+                    <img class="fondo" src="../../../../assets/images/menu_container.svg" alt="">
+                </div>
+            </div>
+
+            <div class="item" 
+                 data-categoria="postres" 
+                 data-descripcion="Brownie de chocolate"
+            >
+                <div class="item-contenido">
+                    <p class="articulo_name">Brownie</p>
+                    <p class="articulo_desc">Brownie de chocolate</p>
+                    <p class="articulo_precio">$10.29</p>
+                    <button class="articulo_button">+</button>
+                    <img class="articulo" src="../assets/images/MENU/POSTRES/Brownies.png" alt="">
+                    <img class="fondo" src="../../../../assets/images/menu_container.svg" alt="">
+                </div>
+            </div>
+
+            <div class="item" 
+                 data-categoria="snacks" 
+                 data-descripcion="Ensalada caesar"
+            >
+                <div class="item-contenido">
+                    <p class="articulo_name">Ensalada Caesar</p>
+                    <p class="articulo_desc">Ensalada</p>
+                    <p class="articulo_precio">$18.99</p>
+                    <button class="articulo_button">+</button>
+                    <img class="articulo" src="../assets/images/MENU/COMIDA/Ensalada caesar.webp" alt="">
+                    <img class="fondo" src="../../../../assets/images/menu_container.svg" alt="">
+                </div>
+            </div>
+
+            
+        </section>
+
+        <section class="overlay activo" id="overlay">
+            <div class="contenedor-img">
+                <button id="btn-cerrar-popup">X</button>
+                <img src="../assets/images/MENU/BEBIDAS/Frappuccino caramelo.webp" alt="" height="400px">
+            </div>
+            <p class="descripcion">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, itaque ullam suscipit neque tempore ratione veritatis tenetur doloremque numquam cupiditate, non nemo nihil, quos voluptatibus excepturi earum reiciendis nesciunt exercitationem.
+            </p>
+        </section>
+
+    </div>
+    
+    <script src="../../../../lib/node_modules/web-animations-js/web-animations.min.js"></script>
+    <script src="../../../../lib/node_modules/muuri/dist/muuri.min.js"></script>
+
+    <script src="../js/idea.js"></script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+/* *******************
+       FONTS IMPORTS
+   ******************* */
+   @font-face {
+    font-family: 'Poppins-SemiBold';
+    src: url('../../../../../assets/fonts/Poppins/Poppins-SemiBold.ttf') format('truetype');
+    font-weight: 600; /* Puedes ajustar el peso según sea necesario */
+    font-style: normal; /* O italic si es una versión itálica */
+}
+
+@font-face {
+    font-family: 'Poppins-italic';
+    src: url('../../../../../assets/fonts/Poppins/Poppins-MediumItalic.ttf') format('truetype');
+    font-weight: 400; /* Puedes ajustar el peso según sea necesario */
+    font-style: normal; /* O italic si es una versión itálica */
+}
+.loader-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    width: 100%;
+}
+.loader-container.loaded{
+    opacity: 0;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+    --c1:#673b14;
+    --c2:#f8b13b;
+    width: 80px;
+    height: 130px;
+    border-top: 4px solid var(--c1);
+    border-bottom: 4px solid var(--c1);
+    background: linear-gradient(90deg, var(--c1) 2px, var(--c2) 0 5px,var(--c1) 0) 50%/7px 8px no-repeat;
+    display: grid;
+    overflow: hidden;
+    animation: l5-0 2s infinite linear;
+  }
+  .loader::before,
+  .loader::after {
+    content: "";
+    grid-area: 1/1;
+    width: 75%;
+    height: calc(50% - 4px);
+    margin: 0 auto;
+    border: 2px solid var(--c1);
+    border-top: 0;
+    box-sizing: content-box;
+    border-radius: 0 0 40% 40%;
+    -webkit-mask: 
+      linear-gradient(#000 0 0) bottom/4px 2px no-repeat,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+    background: 
+      linear-gradient(var(--d,0deg),var(--c2) 50%,#0000 0) bottom /100% 205%,
+      linear-gradient(var(--c2) 0 0) center/0 100%;
+    background-repeat: no-repeat;
+    animation: inherit;
+    animation-name: l5-1;
+  }
+  .loader::after {
+    transform-origin: 50% calc(100% + 2px);
+    transform: scaleY(-1);
+    --s:3px;
+    --d:180deg;
+  }
+  @keyframes l5-0 {
+    80%  {transform: rotate(0)}
+    100% {transform: rotate(0.5turn)}
+  }
+  @keyframes l5-1 {
+    10%,70%  {background-size:100% 205%,var(--s,0) 100%}
+    70%,100% {background-position: top,center}
+  }
+
+/* ******************
+          Grid
+   ****************** */
+
+.layout {
+    width: 1366px;
+    height: 768px;
+  
+    display: grid;
+    grid:
+      "header_grid header_grid orden_grid" auto
+      "menu_grid menu_grid orden_grid" 1fr
+      / 1fr 1fr 1fr;
+    gap: 8px;
+  }
+  
+.header_grid { grid-area: header_grid; }
+.orden_grid { grid-area: orden_grid; }
+.menu_grid { grid-area: menu_grid; }
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #FAFAFA;
+}
+
+a {
+    text-decoration: none;
+}
+
+.contenedor {
+    width: 100%;
+    max-width: 90%;
+    margin: auto;
+}
