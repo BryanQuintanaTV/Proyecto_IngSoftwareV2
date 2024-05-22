@@ -155,11 +155,11 @@
                     <img class="fondo_overlay" src="../assets/images/MENU/BEBIDAS/Frappuccino caramelo.webp" alt="" height="400px">
                     
                     <!-- It shows all the posible options, but in JS must show only the available with the product -->
-                    <div class="overlay_opciones">
-                        <button id="overlay_opciones_tipo">Tipos / Sabores</button>
-                        <button id="overlay_opciones_add">Add / <br> Extra</button>
-                        <button id="overlay_opciones_no">No</button>
-                        <button id="overlay_opciones_size">Tamaño</button>
+                    <div class="overlay_opciones" id="overlay_opciones">
+                        <button id="overlay_opciones_tipo" value="0">Tipos / Sabores</button>
+                        <button id="overlay_opciones_add" value="1">Add / <br> Extra</button>
+                        <button id="overlay_opciones_no" value="2">No</button>
+                        <button id="overlay_opciones_size" value="3">Tamaño</button>
                     </div>
 
                     <!-- TODO In the div it must show all the options available on the option (tipos/sabores || add/extra || No || tamaño) using the JS-->
@@ -191,9 +191,14 @@
                         <!-- FIXME needs to show one element per line -->
                         <p class="resumen_titulo">Resumen:</p> <br>
                     </div>
+
+                    <div class="overlay_acctionBtn">
+                        <button>Añadir</button>
+                        <button>Cancelar</button>
+                    </div>
                 </div>
                     <!-- TODO Delete this element and the css of the element -->
-                    <p class="descripcion"></p>
+                    <!-- <p class="descripcion"></p> -->
             </div>
         </section>
 

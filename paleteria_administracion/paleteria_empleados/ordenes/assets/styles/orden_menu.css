@@ -59,7 +59,7 @@
 .orden .orden_detalle::-webkit-scrollbar-thumb {
 	border-radius: 10px;
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: #EA6A12;
+	background-color: #9845d8;
 }
 
 .orden .orden_total {
@@ -81,7 +81,7 @@
 
 .orden .orden_detalle .orden_detalle_articulo .articulo_cantidad {
     position: absolute;
-    color: #EA6A12;
+    color: #3d105b;
     left: 150px;
     top: 50px;
 }
@@ -114,7 +114,7 @@
 
 .orden .orden_detalle .orden_detalle_articulo .articulo_total {
     position: absolute;
-    color: #EA6A12;
+    color: #3d105b;
     left: 450px;
     top: 60px;
 }
@@ -139,7 +139,7 @@
     font-family: 'Poppins-SemiBold', sans-serif;
     font-weight: 600;
     font-size: 15px;
-    background-color: #EA6A12;
+    background-color: #b87aea;
     color: white;
     height: 41px;
     width: 140px;
@@ -149,7 +149,7 @@
 }
 
 .orden .orden_confirmar:hover {
-    background-color: #CD5D11;
+    background-color: #9845d8;
 }
 
 .orden .orden_cancelar {

@@ -25,12 +25,12 @@ header .categorias {
 }
 
 header .categorias a {
-    color: #9B9B9B;
+    color: #dabbf7;
     margin: 10px 20px;
     font-size: 18px;
     font-weight: 700;
 }
 
 header .categorias a.activo {
-    color: #000;
+    color: #8333bd;
 }

@@ -3,7 +3,7 @@ window.addEventListener('load', async () => {
 /* Se ejecute primero */
 
     // let url_productos = `http://apicopacabana.com/productos?columnas=id_producto,nombre_producto,descripcion_producto,precio_producto,existencia_producto,img_producto,nombre_tipoproducto&relTablas=tipoproductos&relCampos=producto,tipoproducto`;
-    let url_productos = `http://apicopacabana.com/productos?columnas=id_producto,nombre_producto,descripcion_producto,precio_producto,existencia_producto,img_producto,nombre_tipoproducto&relTablas=tipoproductos&relCampos=producto,tipoproducto&linkTo=id_producto&operadorRelTo==&valueTo=5`;
+    let url_productos = `http://apicopacabana.com/productos?columnas=id_producto,nombre_producto,descripcion_producto,precio_producto,existencia_producto,img_producto,nombre_tipoproducto&relTablas=tipoproductos&relCampos=producto,tipoproducto&linkTo=id_producto&operadorRelTo==&valueTo=1`;
 
 let init_productos = {
   method: "get",
@@ -139,14 +139,16 @@ async function solicitarProductos(url, init) {
     let overlayOpcionesQuitable = document.getElementById('overlay_opciones_no');
     let overlayOpcionesSize = document.getElementById('overlay_opciones_size');
 
+    let overlayOpciones =  document.querySelectorAll("#overlay_opciones button");
+
+
     document.querySelectorAll('.grid .item button').forEach((elemento) => {
         elemento.addEventListener('click', () => {
-            // console.log('click');
+
             const ruta = elemento.parentNode.querySelector('img.articulo').src;
-            // console.log("La ruta es",ruta);
             const idProducto = elemento.parentNode.parentNode.dataset.idProducto;
 
-
+        
                 if (elemento.parentNode.parentNode.dataset.tipo) {
                     overlayOpcionesTipo.classList.remove("noShow");
                     const tipos = elemento.parentNode.parentNode.dataset.tipo.split(',');
@@ -161,12 +163,20 @@ async function solicitarProductos(url, init) {
                     console.log("TIPOS",tipos);
                 }else {
                     overlayOpcionesTipo.classList.add("noShow");
+                    overlayPantalla.innerHTML = '';
                 }
 
                 if (elemento.parentNode.parentNode.dataset.agregable) {
                     overlayOpcionesAgregable.classList.remove("noShow");
                     const agregables = elemento.parentNode.parentNode.dataset.agregable.split(',');
                     agregables.pop();
+                    
+                    html = '';
+                    for (let i = 0; i < agregables.length; i+=2) {
+                        html += `<button value="${agregables[i+1]}">${agregables[i]}</button>`;
+                    }
+                    overlayPantalla.innerHTML = html;
+
                     console.log("AGREGABLES",agregables);
                 }else{
                     overlayOpcionesAgregable.classList.add("noShow");
@@ -176,6 +186,11 @@ async function solicitarProductos(url, init) {
                     overlayOpcionesQuitable.classList.remove("noShow");
                     const quitables = elemento.parentNode.parentNode.dataset.quitable.split(',');
                     quitables.pop();
+                    html = '';
+                    for (let i = 0; i < quitables.length; i+=2) {
+                        html += `<button value="${quitables[i+1]}">${quitables[i]}</button>`;
+                    }
+                    overlayPantalla.innerHTML = html;
                     console.log("QUITABLES",quitables);
                 }else {
                     overlayOpcionesQuitable.classList.add("noShow");
@@ -185,6 +200,11 @@ async function solicitarProductos(url, init) {
                     overlayOpcionesSize.classList.remove("noShow");
                     const tamanos = elemento.parentNode.parentNode.dataset.size.split(',');
                     tamanos.pop();
+                    html = '';
+                    for (let i = 0; i < tamanos.length; i+=3) {
+                        html += `<button value="${tamanos[i+1]}">${tamanos[i]}</button>`;
+                    }
+                    overlayPantalla.innerHTML = html;
                     console.log("TAMANOS",tamanos);
                 }else {
                     overlayOpcionesSize.classList.add("noShow");
@@ -203,10 +223,65 @@ async function solicitarProductos(url, init) {
                 document.querySelector('#overlay .fondo_overlay').src = ruta;
                 document.querySelector('#overlay .descripcion').innerHTML = idProducto;
             
-           
-
         });
     });
+
+                // overlayOpcionesTipo al hacer click en el boton, imprimir el value de ese boton
+                overlayOpciones.forEach(boton => {
+                    boton.addEventListener('click', function() {
+                        // Obtener el valor del botón clickeado
+                        const valor = this.value;
+                        console.log(valor);
+                        // Puedes hacer algo con el valor aquí
+    
+                        if (valor == 0) {
+    
+                            this.style.backgroundColor = '#8333bd'; 
+                            this.style.color = 'white';
+                            overlayOpcionesAgregable.style.backgroundColor = '#f4eafd';
+                            overlayOpcionesAgregable.style.color = '#c490f0';
+                            overlayOpcionesQuitable.style.backgroundColor = '#f4eafd';
+                            overlayOpcionesQuitable.style.color = '#c490f0';
+                            overlayOpcionesSize.style.backgroundColor = '#f4eafd';
+                            overlayOpcionesSize.style.color = '#c490f0';
+                            
+                            
+                        } else if (valor == 1) {
+    
+                            this.style.backgroundColor = '#8333bd'; 
+                            this.style.color = 'white';
+                            overlayOpcionesTipo.style.backgroundColor = '#f4eafd';
+                            overlayOpcionesTipo.style.color = '#c490f0';
+                            overlayOpcionesQuitable.style.backgroundColor = '#f4eafd';
+                            overlayOpcionesQuitable.style.color = '#c490f0';
+                            overlayOpcionesSize.style.backgroundColor = '#f4eafd';
+                            overlayOpcionesSize.style.color = '#c490f0';
+                            
+                        } else if (valor == 2) {
+    
+                            this.style.backgroundColor = '#8333bd'; 
+                            this.style.color = 'white';
+                            overlayOpcionesAgregable.style.backgroundColor = '#f4eafd';
+                            overlayOpcionesAgregable.style.color = '#c490f0';
+                            overlayOpcionesTipo.style.backgroundColor = '#f4eafd';
+                            overlayOpcionesTipo.style.color = '#c490f0';
+                            overlayOpcionesSize.style.backgroundColor = '#f4eafd';
+                            overlayOpcionesSize.style.color = '#c490f0';
+    
+                        } else if (valor == 3) {
+    
+                            this.style.backgroundColor = '#8333bd'; 
+                            this.style.color = 'white';
+                            overlayOpcionesAgregable.style.backgroundColor = '#f4eafd';
+                            overlayOpcionesAgregable.style.color = '#c490f0';
+                            overlayOpcionesQuitable.style.backgroundColor = '#f4eafd';
+                            overlayOpcionesQuitable.style.color = '#c490f0';
+                            overlayOpcionesTipo.style.backgroundColor = '#f4eafd';
+                            overlayOpcionesTipo.style.color = '#c490f0';
+                            
+                        }
+                    });
+                });
 
     // Eventlistener del boton de cerrar
     document.querySelector('#btn-cerrar-popup').addEventListener('click', () => {

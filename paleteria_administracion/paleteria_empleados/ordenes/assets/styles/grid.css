@@ -88,7 +88,7 @@
      font-size: 20px;
      bottom: -155px;
      left: 10px;
-     color: #EA6A12;
+     color: #5b277c;
      z-index: 2;
  }
  
@@ -100,7 +100,7 @@
      font-family: 'Poppins-SemiBold', sans-serif;
      font-weight: 600;
      font-size: 30px;
-     background-color: #EA6A12;
+     background-color: #b87aea;
      color: white;
      bottom: -150px;
      right: 25px;
@@ -111,6 +111,6 @@
  }
  
  .grid .item .articulo_button:hover {
-     background-color: #CD5D11;
+     background-color: #9845d8;
  }
  
