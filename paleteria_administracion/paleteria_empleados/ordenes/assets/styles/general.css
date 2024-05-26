@@ -14,6 +14,9 @@
     font-weight: 400; /* Puedes ajustar el peso según sea necesario */
     font-style: normal; /* O italic si es una versión itálica */
 }
+.swal2-timer-progress-bar {
+  background-color: #9845d8 !important;
+}
 .loader-container{
     display: flex;
     justify-content: center;

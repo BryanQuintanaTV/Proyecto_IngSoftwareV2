@@ -230,6 +230,12 @@
     background-color: #cc88fa;
 }
 
+.overlay .screen .overlay_cantidades button:disabled {
+    cursor: not-allowed;
+    background-color: #f4eafd;
+    color: #c490f0;
+}
+
 .overlay .screen .overlay_resumen  {
     position: absolute;
     top: 285px;
@@ -275,6 +281,59 @@
     font-weight: 600;
     font-size: 20px;
     color: #3d105b;
+}
+
+.overlay .screen .overlay_actionBtn {
+    position: absolute;
+    right: 40px;
+    top: 640px;
+}
+
+.overlay .screen .addBtn {
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Poppins-SemiBold', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    background-color: #b87aea;
+    color: white;
+    height: 41px;
+    width: 140px;
+    z-index: 2;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.overlay .screen .addBtn:hover {
+    background-color: #9845d8;
+}
+
+.overlay .screen .addBtn:disabled {
+    cursor: not-allowed;
+    background-color: #f4eafd;
+    color: #c490f0;
+}
+
+.overlay .screen .cancelBtn {
+    /* border: none; */
+    border-radius: 20px;
+    border-color: #991858;
+    cursor: pointer;
+    font-family: 'Poppins-SemiBold', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    background-color: #d8d8d8;
+    color: rgb(31, 30, 30);
+    height: 41px;
+    width: 140px;
+    z-index: 2;
+    transition: background-color 0.3s ease;
+}
+
+.overlay .screen .cancelBtn:hover {
+    background-color: #aba9a9;
+    color: rgb(241, 3, 3);
 }
 
 .overlay .descripcion {
