@@ -1,0 +1,163 @@
+/* ---------- GENERAL ---------- */
+* {
+    -webkit-box-sizing: inherit;
+            box-sizing: inherit;
+  }
+  
+  html {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #c0c0c0;
+    font-family: 'Varela Round', sans-serif;
+    line-height: 1.5;
+    margin: 0;
+    min-height: 100vh;
+    padding: 5vmin;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  input, .button {
+    background-image: none;
+    border: none;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+  
+  svg {
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+  }
+  
+  /* ---------- ALIGN ---------- */
+  .align {
+    display: grid;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    justify-items: center;
+    place-items: center;
+  }
+
+  /* ------- Ice Cream Image ----- */
+
+  .iceCreamImg img {
+    position: absolute;
+    top: -25px;
+    right: 550px;
+    height: 330px;
+  }
+
+  .iceCreamImg img:first-child{
+    z-index: 1;
+    right: 670px;
+  }
+  
+  /* ---------- BUTTON ---------- */
+  
+  .button {
+    background-color: #b87aea;
+    color: #fff;
+    padding: 0.25em 1.5em;
+    cursor: pointer;
+  }
+  
+  .button:focus,
+  .button:hover {
+    background-color: #9845d8;
+  }
+  
+  /* ---------- ICONS ---------- */
+  .icons {
+    display: none;
+  }
+  
+  .icon {
+    fill: currentcolor;
+    display: inline-block;
+    height: 1em;
+    width: 1em;
+  }
+  
+  /* ---------- LOGIN ---------- */
+  .login {
+    width: 400px;
+  }
+  
+  .login__header {
+    background-color: #dabbf7;
+    border-top-left-radius: 1.25em;
+    border-top-right-radius: 1.25em;
+    color: #9845d8;
+    padding: 1.25em 1.625em;
+  }
+  
+  .login__header :first-child {
+    margin-top: 0;
+  }
+  
+  .login__header :last-child {
+    margin-bottom: 0;
+  }
+  
+  .login h2 .icon {
+    margin-right: 14px;
+  }
+  
+  .login__form {
+    background-color: #f4eafd;
+    border-bottom-left-radius: 1.25em;
+    border-bottom-right-radius: 1.25em;
+    color: #5b277c;
+    display: grid;
+    grid-gap: 0.875em;
+    gap: 0.875em;
+    padding: 1.25em 1.625em;
+  }
+  
+  .login__form fieldset {
+    border: none;
+  }
+  
+  .form-group select {
+    background-color: #eee;
+    color: #777;
+    padding: 0.25em 0.625em;
+    width: 40%;
+    border-radius: 20px;
+  }
+  
+  .login input {
+    border-radius: 0.1875em;
+  }
+  
+  .login input::placeholder {
+    color: #dabbf7;
+  }
+
+  .login button {
+    border-radius: 0.1875em;
+  }
+  
+  .login input[type="text"],
+  .login input[type="password"] {
+    background-color: #faf6fe;
+    color: #6e2f9a;
+    padding: 0.25em 0.625em;
+    width: 100%;
+  }
+  
+  .login button {
+    display: block;
+    margin: 0 auto;
+  }
