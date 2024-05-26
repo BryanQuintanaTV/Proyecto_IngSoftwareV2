@@ -14,6 +14,8 @@ window.addEventListener("load", async () => {
       backdrop: `rgba(2, 2, 2, 1)`,
       timer: 10000,
       timerProgressBar: true,
+      allowOutsideClick: false,
+      allowEscapeKey: false
     });
     setTimeout(function() {
       window.location.href = '../../../pages/index.php';
