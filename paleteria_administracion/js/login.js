@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("load", function () {
+    sessionStorage.clear();
     const formularioLogin = document.getElementById("login");
 
     formularioLogin.addEventListener("submit", function (event) {
@@ -93,7 +94,7 @@ function verificarContraseña(
           showConfirmButton: false,
           timer: 1500,
         });
-        sessionStorage.setItem("tipoUser", "admin");
+        sessionStorage.setItem("tipoUser", nombrePerfil);
         sessionStorage.setItem("nombreUsuario", nombreUsuario);
 
         let tipoUsuario = sessionStorage.getItem("tipoUser");
