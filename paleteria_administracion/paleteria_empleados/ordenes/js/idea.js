@@ -2,32 +2,13 @@ window.addEventListener("load", async () => {
 
   // Verificar si el sessionStorage contiene el valor esperado
   if (sessionStorage.getItem('tipoUser') == "cajero") {
-    // Si no contiene el valor esperado, redirigir a la página de inicio de sesión
-  
-  } else {
-    Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: "Parece ser que no tienes acceso a esta página! \n Regresando al login...",
-      footer: '<a href="#">Why do I have this issue?</a>',
-      showConfirmButton: false,
-      backdrop: `rgba(2, 2, 2, 1)`,
-      timer: 10000,
-      timerProgressBar: true,
-      allowOutsideClick: false,
-      allowEscapeKey: false
-    });
-    setTimeout(function() {
-      window.location.href = '../../../pages/index.php';
-      // Limpiar todo el sessionStorage
-      sessionStorage.clear();
-    }, 10000);
-  }
+    // Si el usuario es un cajero, entonces se le permite el acceso a la página
 
-  /* Se ejecute primero */
+    /* Se ejecute primero */
   let nuevoProducto;
-  let url_productos = `http://apicopacabana.com/productos?columnas=id_producto,nombre_producto,descripcion_producto,precio_producto,existencia_producto,img_producto,nombre_tipoproducto&relTablas=tipoproductos&relCampos=producto,tipoproducto`;
+  // let url_productos = `http://apicopacabana.com/productos?columnas=id_producto,nombre_producto,descripcion_producto,precio_producto,existencia_producto,img_producto,nombre_tipoproducto&relTablas=tipoproductos&relCampos=producto,tipoproducto`;
   // let url_productos = `http://apicopacabana.com/productos?columnas=id_producto,nombre_producto,descripcion_producto,precio_producto,existencia_producto,img_producto,nombre_tipoproducto&relTablas=tipoproductos&relCampos=producto,tipoproducto&linkTo=id_producto&operadorRelTo==&valueTo=1`;
+  let url_productos = `http://apicopacabana.com/vw_getProducts?columnas=*`;
 
   let init_productos = {
     method: "get",
@@ -56,58 +37,28 @@ window.addEventListener("load", async () => {
       let datoss = objJSdatos.datos;
       var contenedor = document.getElementById("grid");
 
-      for (let i = 0; i < datoss.length; i++) {
-        let tiposA = [];
-        let agregablesA = [];
-        let quitablesA = [];
-        let tamanosA = [];
+      datoss.forEach((datos) => {
 
-        const datos = datoss[i];
-        try {
-          const tiposJSON = await obtenerTipos(datos.id_producto);
-          console.log(tiposJSON);
-          const tiposText = tiposJSON
-            .map((tipo) => `${tipo.nombre_tipo},${tipo.id_tipo},`)
-            .join(",");
-          console.log("TIPOS A ES", tiposText);
+        let tiposText = datos.tipos;
+        console.log("TIPOS A ES", tiposText);
 
-          const agregablesJSON = await obtenerAgregables(datos.id_producto);
-          console.log(agregablesJSON);
-          const agregablesText = agregablesJSON
-            .map(
-              (agregable) =>
-                `${agregable.nombre_agregable},${agregable.id_agregable},`
-            )
-            .join(",");
-          console.log("AGREGABLES A ES", agregablesText);
+        let agregablesText = datos.agregables;
+        console.log("AGREGABLES A ES", agregablesText);
 
-          const quitablesJSON = await obtenerQuitables(datos.id_producto);
-          console.log(quitablesJSON);
-          const quitablesText = quitablesJSON
-            .map(
-              (quitable) =>
-                `${quitable.nombre_quitable},${quitable.id_quitable},`
-            )
-            .join(",");
-          console.log("QUITABLES A ES", quitablesText);
+        let quitablesText = datos.quitables;
+        console.log("QUITABLES A ES", quitablesText);
 
-          const tamanosJSON = await obtenerTamanos(datos.id_producto);
-          console.log("TAMANOS A ES", tamanosA);
-          const tamanosText = tamanosJSON
-            .map(
-              (tamano) =>
-                `${tamano.nombre_size},${tamano.id_size},${tamano.precio_size},`
-            )
-            .join(",");
+        let tamanosText = datos.sizes;
+        console.log("TAMANOS A ES", tamanosText);
 
-          let nuevoItem = document.createElement("div");
+        let nuevoItem = document.createElement("div");
           nuevoItem.classList.add("item");
           nuevoItem.dataset.categoria = datos.nombre_tipoproducto;
           nuevoItem.dataset.idProducto = datos.id_producto;
-          nuevoItem.dataset.tipo = tiposText.replace(/,,/g, ",");
-          nuevoItem.dataset.agregable = agregablesText.replace(/,,/g, ",");
-          nuevoItem.dataset.quitable = quitablesText.replace(/,,/g, ",");
-          nuevoItem.dataset.size = tamanosText.replace(/,,/g, ",");
+          nuevoItem.dataset.tipo = (tiposText === null) ? "" : tiposText.replace(/,,/g, ",");
+          nuevoItem.dataset.agregable = (agregablesText === null) ? "" : agregablesText.replace(/,,/g, ",");
+          nuevoItem.dataset.quitable = (quitablesText === null) ? "" : quitablesText.replace(/,,/g, ",");
+          nuevoItem.dataset.size = (tamanosText === null) ? "" : tamanosText.replace(/,,/g, ",");
 
           let itemContenido = document.createElement("div");
           itemContenido.classList.add("item-contenido");
@@ -123,15 +74,8 @@ window.addEventListener("load", async () => {
 
           nuevoItem.appendChild(itemContenido);
           contenedor.appendChild(nuevoItem);
-        } catch (error) {
-          console.error("Error al procesar los datos:", error);
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Error Al Procesar los datos",
-          });
-        }
-      }
+
+      });  
     } catch (error) {
       console.error("Error al obtener datos:", error);
       Swal.fire({
@@ -458,98 +402,28 @@ window.addEventListener("load", async () => {
     }
   }
 
+  
+  } else {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Parece ser que no tienes acceso a esta página!",
+      footer: 'Regresando al login...',
+      showConfirmButton: false,
+      backdrop: `rgba(2, 2, 2, 1)`,
+      timer: 8000,
+      timerProgressBar: true,
+      allowOutsideClick: false,
+      allowEscapeKey: false
+    });
+    setTimeout(function() {
+      window.location.href = '../../../pages/index.php';
+      // Limpiar todo el sessionStorage
+      sessionStorage.clear();
+    }, 8000);
+  }
+
 });
 
-async function obtenerTipos(idProducto) {
-  let url_tipos = `http://apicopacabana.com/tipos?columnas=id_tipo,nombre_tipo&relTablas=productos&relCampos=tipo,producto&linkTo=id_producto&operadorRelTo==&valueTo=${idProducto}`;
-  let init_tipos = {
-    method: "get",
-    header: {
-      "Content-Type": "application/json",
-    },
-  };
 
-  async function solicitarTipos(url, init) {
-    const objJSdatos = await fetchSynchronousGET(url, init);
-    console.log("------------------");
-    console.log(objJSdatos);
-
-    let datoss = objJSdatos.datos;
-
-    console.log(datoss);
-    return datoss;
-  }
-
-  return await solicitarTipos(url_tipos, init_tipos);
-}
-
-async function obtenerAgregables(idProducto) {
-  let url_agregables = `http://apicopacabana.com/agregables?columnas=id_agregable,nombre_agregable&relTablas=productos&relCampos=agregable,producto&linkTo=id_producto&operadorRelTo==&valueTo=${idProducto}`;
-  let init_agregables = {
-    method: "get",
-    header: {
-      "Content-Type": "application/json",
-    },
-  };
-
-  async function solicitarAgregables(url, init) {
-    const objJSdatos = await fetchSynchronousGET(url, init);
-    console.log("------------------");
-    console.log(objJSdatos);
-
-    let datoss = objJSdatos.datos;
-
-    console.log(datoss);
-    return datoss;
-  }
-
-  return await solicitarAgregables(url_agregables, init_agregables);
-}
-
-async function obtenerQuitables(idProducto) {
-  let url_quitables = `http://apicopacabana.com/quitables?columnas=id_quitable,nombre_quitable&relTablas=productos&relCampos=quitable,producto&linkTo=id_producto&operadorRelTo==&valueTo=${idProducto}`;
-  let init_quitables = {
-    method: "get",
-    header: {
-      "Content-Type": "application/json",
-    },
-  };
-
-  async function solicitarQuitables(url, init) {
-    const objJSdatos = await fetchSynchronousGET(url, init);
-    console.log("------------------");
-    console.log(objJSdatos);
-
-    let datoss = objJSdatos.datos;
-
-    console.log(datoss);
-    return datoss;
-  }
-
-  return await solicitarQuitables(url_quitables, init_quitables);
-}
-
-async function obtenerTamanos(idProducto) {
-  let url_tamanos = `http://apicopacabana.com/sizes?columnas=id_size,nombre_size,precio_size&relTablas=productos&relCampos=size,producto&linkTo=id_producto&operadorRelTo==&valueTo=${idProducto}`;
-  let init_tamanos = {
-    method: "get",
-    header: {
-      "Content-Type": "application/json",
-    },
-  };
-
-  async function solicitarTamanos(url, init) {
-    const objJSdatos = await fetchSynchronousGET(url, init);
-    console.log("------------------");
-    console.log(objJSdatos);
-
-    let datoss = objJSdatos.datos;
-
-    console.log(datoss);
-    return datoss;
-  }
-
-  return await solicitarTamanos(url_tamanos, init_tamanos);
-  
-}
 
