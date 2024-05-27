@@ -3,6 +3,8 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
+  <!-- Icon web page -->
+  <link rel="shortcut icon" href="../../assets/icons/login_icon.ico" type="image/x-icon" />
   <title>Login</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
   <link rel="stylesheet" href="../styles/login.css">
