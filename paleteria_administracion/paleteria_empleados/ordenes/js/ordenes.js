@@ -6,8 +6,6 @@ window.addEventListener("load", async () => {
 
     /* Se ejecute primero */
   let nuevoProducto;
-  // let url_productos = `http://apicopacabana.com/productos?columnas=id_producto,nombre_producto,descripcion_producto,precio_producto,existencia_producto,img_producto,nombre_tipoproducto&relTablas=tipoproductos&relCampos=producto,tipoproducto`;
-  // let url_productos = `http://apicopacabana.com/productos?columnas=id_producto,nombre_producto,descripcion_producto,precio_producto,existencia_producto,img_producto,nombre_tipoproducto&relTablas=tipoproductos&relCampos=producto,tipoproducto&linkTo=id_producto&operadorRelTo==&valueTo=1`;
   let url_productos = `http://apicopacabana.com/vw_getProducts?columnas=*`;
 
   let init_productos = {
