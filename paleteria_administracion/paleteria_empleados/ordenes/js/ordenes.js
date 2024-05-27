@@ -224,7 +224,7 @@ window.addEventListener("load", async () => {
         tamanos.pop();
         html = "";
         for (let i = 0; i < tamanos.length; i += 3) {
-          html += `<button value="${tamanos[i + 1]}">${tamanos[i]}</button>`;
+          html += `<button value="${tamanos[i + 1]}" data-precio="${tamanos[i+2]}">${tamanos[i]}</button>`;
         }
         overlayPantalla_size.innerHTML = html;
         console.log("TAMANOS", tamanos);
