@@ -102,9 +102,10 @@ function verificarContraseña(
         setTimeout(function() {
             if (tipoUsuario == "cajero") {
             window.location.href ="http://admincopacabana.com/paleteria_administracion/paleteria_empleados/ordenes/pages/index.html";
-            } else{
-            // window.location.href ="http://admincopacabana.com/paleteria_administracion/paleteria_empleados/ordenes/pages/idea2.html";
+            } else if (tipoUsuario == "admin") {
+              window.location.href ="http://admincopacabana.com/paleteria_administracion/paleteria_admin/pages";
             }
+            // window.location.href ="http://admincopacabana.com/paleteria_administracion/paleteria_admin/pages/idea2.html";
         }, 1500);
 
       } else {
