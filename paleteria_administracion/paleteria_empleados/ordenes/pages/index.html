@@ -88,6 +88,7 @@
                                 <p class="articulo_cantidad">x<span>1</span></p>
                                 <p class="articulo_extras activo">No extras</p>
                                 <button class="articulo_btn" id="delete_articulo_btn"><img src="../../../../assets/icons/delete_icon.svg" alt=""></button>
+                                <img class="articulo_img" src="../../../../assets/images/Menu/aguasfrescas.webp" alt="">
                                 <p class="articulo_total">$<span>7.99</span></p>
                                 <img src="../../../../assets/images/orden_detail.svg" alt="">
                             </div>
@@ -101,7 +102,7 @@
                             <!-- TODO the button "confirmar" must POST the correct information into the "orden & ordendetalles" tables -->
                             <button class="orden_confirmar">Confirmar</button>
                             <!-- TODO the button "cancelar" must cancel the order that it was created locally (nothing was inserted into the db) -->
-                            <button class="orden_cancelar">Cancelar</button>
+                            <button class="orden_cancelar" id="orden_cancelar">Cancelar</button>
                         </div>
                     </div>
                 </section>
@@ -137,18 +138,18 @@
                     <div class="overlay_cantidades">
                         <p>Cantidad</p>
                         <!-- TODO it must select the quantity of the selected product -->
-                        <div class="overlay_cantidades_btn">
+                        <div class="overlay_cantidades_btn" id="overlay_cantidades_btn">
                             <!-- TODO double click must restart the quantity of the selected product to 1 -->
-                            <button value="0" disabled>0</button>
-                            <button value="1" disabled>1</button>
-                            <button value="2" disabled>2</button>
-                            <button value="3" disabled>3</button>
-                            <button value="4" disabled>4</button>
-                            <button value="5" disabled>5</button>
-                            <button value="6" disabled>6</button>
-                            <button value="7" disabled>7</button>
-                            <button value="8" disabled>8</button>
-                            <button value="9" disabled>9</button>
+                            <button value="0">0</button>
+                            <button value="1">1</button>
+                            <button value="2">2</button>
+                            <button value="3">3</button>
+                            <button value="4">4</button>
+                            <button value="5">5</button>
+                            <button value="6">6</button>
+                            <button value="7">7</button>
+                            <button value="8">8</button>
+                            <button value="9">9</button>
                         </div>
                     </div>
 

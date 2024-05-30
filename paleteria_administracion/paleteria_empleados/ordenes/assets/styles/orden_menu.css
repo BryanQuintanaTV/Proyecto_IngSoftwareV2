@@ -123,6 +123,17 @@
     color: #000;
 }
 
+.orden .orden_detalle .orden_detalle_articulo .articulo_img {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background-color: #ea681200;
+
+
+}
 
 
 .orden .orden_botones {

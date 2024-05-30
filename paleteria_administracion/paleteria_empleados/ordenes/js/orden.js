@@ -27,11 +27,18 @@
       this.actualizarTotal();
     }
 
+    eliminarTodosProductos() {
+      this.productos = [];
+      this.actualizarVista();
+      this.actualizarTotal();
+    }
+
     actualizarVista() {
       const ordenDetalle = this.ordenDetalle;
       console.log('Entro a la funcion actualizarVista');
       ordenDetalle.innerHTML = "";
       this.productos.forEach((producto, index) => {
+        console.log(producto.precio, 'Precio del producto');
         console.log('Entro al foreach');
         const productDiv = document.createElement("div");
         productDiv.classList.add("orden_detalle_articulo");
@@ -42,6 +49,7 @@
           <button class="articulo_btn" id="delete_articulo_btn" data-index="${index}"><img src="${
           producto.deleteIconSrc
         }" alt=""></button>
+          <img class="articulo_img" src="${producto.imgProducto}" alt="">
           <p class="articulo_total">$<span>${producto.precio.toFixed(
             2
           )}</span></p>
@@ -64,7 +72,7 @@
 
     actualizarTotal() {
       const total = this.productos.reduce(
-        (acc, producto) => acc + producto.precio,
+        (acc, producto) => acc + (producto.precio * producto.cantidad),
         0
       );
       document.querySelector(".orden_total span").textContent =

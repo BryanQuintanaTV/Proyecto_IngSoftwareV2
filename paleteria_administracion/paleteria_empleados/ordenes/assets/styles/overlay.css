@@ -230,11 +230,11 @@
     background-color: #cc88fa;
 }
 
-.overlay .screen .overlay_cantidades button:disabled {
+/* .overlay .screen .overlay_cantidades button:disabled {
     cursor: not-allowed;
     background-color: #f4eafd;
     color: #c490f0;
-}
+} */
 
 .overlay .screen .overlay_resumen  {
     position: absolute;

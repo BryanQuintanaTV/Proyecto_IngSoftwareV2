@@ -131,6 +131,7 @@ window.addEventListener("load", async () => {
    ********************************************************************/
 
   const overlay = document.getElementById("overlay");
+  let buttons_cantidad = document.getElementById('overlay_cantidades_btn').querySelectorAll('button');
   let overlayPantalla = document.getElementById("overlay_opciones_pantalla");
   let overlayOpcionesTipo = document.getElementById("overlay_opciones_tipo");
   let overlayOpcionesAgregable = document.getElementById("overlay_opciones_add");
@@ -153,18 +154,24 @@ window.addEventListener("load", async () => {
 
   let ordenCreada = false;
   let id_orden, quantity = 1;
+  let cantidad_productos;
 
   let delete_product;
+  let isFirstClick;
   /********************************************************************
    *  Overlay cuando se selecciona un producto del menu
    ********************************************************************/
   const orden = new Orden();
   document.querySelectorAll(".grid .item button").forEach((elemento) => {
     elemento.addEventListener("click", () => {
-      const ruta = elemento.parentNode.querySelector("img.articulo").src;
+      let ruta = elemento.parentNode.querySelector("img.articulo").src;
       nameProduct = elemento.parentNode.querySelector("p.articulo_name").textContent;
       console.log(nameProduct, "nameProduct");
-      const idProducto = elemento.parentNode.parentNode.dataset.idProducto;
+      let idProducto = elemento.parentNode.parentNode.dataset.idProducto;
+      let productoPrecio = elemento.parentNode.querySelector("p.articulo_precio").textContent;
+      productoPrecio = productoPrecio.replace("$ ", "");
+      productoPrecio = parseFloat(productoPrecio);
+      console.log(productoPrecio, "Precio del productoooo");
 
       //Se inicializa una nueva instancia de la clase Orden
       
@@ -255,37 +262,9 @@ window.addEventListener("load", async () => {
         overlayOpcionesSize.classList.add("noShow");
       }
 
-      //SI NO HAY NINGUNA OPCION DE TIPO, AGREGABLE, QUITABLE O SIZE, HABILITAR TODOS LOS BOTONES DE CANTIDADES
-        const container = document.querySelector(".overlay_cantidades_btn");
-        const buttons = container.querySelectorAll("button");
-      if (
-        !elemento.parentNode.parentNode.dataset.tipo &&
-        !elemento.parentNode.parentNode.dataset.agregable &&
-        !elemento.parentNode.parentNode.dataset.quitable &&
-        !elemento.parentNode.parentNode.dataset.size
-      ) {
-        // Itera sobre cada botón y quita el atributo 'disabled'
-        buttons.forEach((button) => {
-          button.removeAttribute("disabled");
-        });
-      } else {
-            buttons.forEach((button) => {
-            button.setAttribute('disabled', 'true');
-          });
-      }
-
       overlayPantalla.addEventListener('click', (evento) => {
         console.log(evento.target.value, "lol", "Valor de boton de tipo", valor);
         
-        // Agregar producto a la orden
-        nuevoProducto = {
-          idProducto: nameProduct,
-          cantidad: 1,
-          extras: "No extras",
-          precio: 7.99,
-          imgSrc: "../../../../assets/images/orden_detail.svg",
-          deleteIconSrc: "../../../../assets/icons/delete_icon.svg"
-        };
 
         if (valor == 0) {
           nuevoProducto.id_tipo_ordendetalle = evento.target.value;
@@ -316,27 +295,78 @@ window.addEventListener("load", async () => {
       document.querySelector("#overlay .fondo_overlay").src = ruta;
       // document.querySelector('#overlay .descripcion').innerHTML = idProducto;
       //al hacer click a algun boton de overlay_opciones_pantalla obtener el value de ese boton
+  
       
-      
-      newProducto = {
-        name: "NOMBRE TEST",
-        idProducto: nameProduct,
-        cantidad: quantity,
+      // newProducto = {
+      //   name: "NOMBRE TEST",
+      //   idProducto: nameProduct,
+      //   cantidad: quantity,
+      //   extras: "No extras",
+      //   precio: 7.99,
+      //   imgSrc: "../../../../assets/images/orden_detail.svg",
+      //   deleteIconSrc: "../../../../assets/icons/delete_icon.svg"
+      // };
+
+      // Agregar producto a la orden
+      nuevoProducto = {
+        idProducto: idProducto,
+        cantidad: 2,
+        name: nameProduct,
         extras: "No extras",
-        precio: 7.99,
+        precio: productoPrecio,
         imgSrc: "../../../../assets/images/orden_detail.svg",
-        deleteIconSrc: "../../../../assets/icons/delete_icon.svg"
+        deleteIconSrc: "../../../../assets/icons/delete_icon.svg",
+        imgProducto: ruta
       };
 
-      
+      cantidad_productos = '1';  // Valor por defecto
+      isFirstClick = true;  // Bandera para el primer clic
+
+
     });
+
+  });
+
+  buttons_cantidad.forEach(button => {
+    button.addEventListener('dblclick', (event) => {
+      if (event.target.value === '0') {
+        cantidad_productos = '1';  // Restablecer a valor por defecto
+        nuevoProducto.cantidad = cantidad_productos;
+        isFirstClick = true;  // Reiniciar la bandera del primer clic
+        console.log('Cantidad de productos restablecida:', cantidad_productos);
+      }
+    });
+
+    button.addEventListener('click', (event) => {
+      console.log('Botón clickeado:', event.target.value);
+      const value = event.target.value;
+        if (isFirstClick) {
+          cantidad_productos = value;
+          nuevoProducto.cantidad = cantidad_productos;
+          console.log('Cantidad de productos:', cantidad_productos);
+          isFirstClick = false;
+        } else {
+          cantidad_productos += value;
+          nuevoProducto.cantidad = cantidad_productos;
+          console.log('Cantidad de productos:', cantidad_productos);
+        }
+          console.log('Cantidad de productos:', cantidad_productos);
+    });
+
+    
+  });
+
+  let cancelarArticulo = document.getElementById("cancelBtn");
+  cancelarArticulo.addEventListener("click", () => {
+    overlay.classList.remove("activo");
   });
 
   let addOrder = document.getElementById("addBtn");
   addOrder.addEventListener("click", () => {
-    console.log("Agregando producto a la orden");
+    console.log("Agregando producto a la orden", nuevoProducto);
     quantity++;
-    orden.agregarProducto(newProducto);
+    orden.agregarProducto(nuevoProducto);
+    overlay.classList.remove("activo");
     
   });
 
@@ -440,6 +470,13 @@ window.addEventListener("load", async () => {
       btnAdd.setAttribute("disabled", "true");
     }
   }
+
+  let deleteAll = document.getElementById("orden_cancelar");
+  deleteAll.addEventListener("click", () => {
+    console.log("Eliminando todos los productos de la orden");
+    orden.eliminarTodosProductos();
+  });
+
 
   
   } else {
