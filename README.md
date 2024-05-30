@@ -20,7 +20,7 @@ Proyecto Ingeniería de Software
 En el archivo de 📄httpd-vhosts poner lo siguiente
 > [!NOTE]
 > Lo que esta entre comillas en **_DocumentRoot_** es la ruta donde están guardadas las carpetas correspondientes<br>
-> { 📁apirest-dinamica-paleteria, 📁Proyecto-Paleteria-Clientes y 📁Administracion-de-Empresa }
+> { 📁apirest-dinamica-paleteria y 📁Proyecto_IngSoftwareV2 }
 ```
 <VirtualHost *:80>
     ServerName apicopacabana.com
@@ -29,12 +29,12 @@ En el archivo de 📄httpd-vhosts poner lo siguiente
 
 <VirtualHost *:80>
     ServerName copacabana.com
-    DocumentRoot "C:/xampp/htdocs/xampp/Carpetas-proyecto-paleteria"
+    DocumentRoot "C:/xampp/htdocs/xampp/Proyecto_IngSoftwareV2"
 </VirtualHost>
 
 <VirtualHost *:80>
     ServerName admincopacabana.com
-    DocumentRoot "C:/xampp/htdocs/xampp/Carpetas-proyecto-paleteria"
+    DocumentRoot "C:/xampp/htdocs/xampp/Proyecto_IngSoftwareV2"
 </VirtualHost>
 
 ```
