@@ -29,12 +29,12 @@ En el archivo de 📄httpd-vhosts poner lo siguiente
 
 <VirtualHost *:80>
     ServerName copacabana.com
-    DocumentRoot "C:/xampp/htdocs/xampp/Carpetas-proyecto-paleteria"
+    DocumentRoot "C:/xampp/htdocs/xampp/Proyecto_IngSoftwareV2"
 </VirtualHost>
 
 <VirtualHost *:80>
     ServerName admincopacabana.com
-    DocumentRoot "C:/xampp/htdocs/xampp/Carpetas-proyecto-paleteria"
+    DocumentRoot "C:/xampp/htdocs/xampp/royecto_IngSoftwareV2"
 </VirtualHost>
 
 ```
