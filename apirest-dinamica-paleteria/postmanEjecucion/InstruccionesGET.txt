@@ -1,0 +1,35 @@
+
+//BASE DE DATOS: database-2
+//RELACIONES SIN FILTROS
+apirest.com/countries?columnas=*&orderBy=name_country&orderMode=DESC&startAt=0&endAt=50&relTablas=codes,dialcodes&relCampos=country,code,dialcode
+
+//BASE DE DATOS: database-2
+//RELACIONES CON FILTROS
+apirest.com/countries?columnas=*&orderBy=name_country&orderMode=DESC&startAt=0&endAt=50&relTablas=codes,dialcodes&relCampos=country,code,dialcode&linkTo=name_country&operadorRelTo==&valueTo=Colombia
+
+//BASE DE DATOS: database-3
+//FILTROS CON LIKE
+apirest.com/products?columnas=*&orderBy=name_product&orderMode=DESC&startAt=0&endAt=50&linkTo=name_product&operadorRelTo==&valueTo=Queso Cabrales
+
+//BASE DE DATOS: database-3
+//TODOS JUNTOS AQUI VOY
+apirest.com/products?columnas=name_product,id_category_product&orderBy=name_product,id_category_product&orderMode=DESC,ASC&startAt=0&endAt=5&linkTo=name_product,id_category_product&operadorRelTo==,=&valueTo=Langostinos tigre Carnarvon_2&operadorLogicoTo=AND
+
+//BASE DE DATOS: database-2
+apirest.com/countries?columnas=name_country,id_code_country,id_dialcode_country,initial_code,digit_dialcode &orderBy=name_country,id_code_country&orderMode=DESC,ASC&startAt=0&endAt=5&relTablas=codes,dialcodes&relCampos=country,code,dialcode&linkTo=id_code_country,id_dialcode_country&equalTo=5_5
+
+//BASE DE DATOS: database-1
+//VALIDAR QUE LAS TABLAS Y LAS COLUMNAS DE LAS TABLAS EXISTAN
+apirest.com/courses?columnas=name_instructor,title_course,id_course&orderBy=name_instructor&orderMode=ASC&relTablas=instructors&relCampos=course,instructor
+
+//BASE DE DATOS: database-1
+//VALIDAR QUE EL NUMERO DE TABLAS SEA IGUAL AL NUMERO DE CAMPOS LLAVES AJENAS
+apirest.com/courses?columnas=name_instructor,title_course,id_course&relTablas=instructors&relCampos=course,instructor&orderBy=name_instructor&orderMode=ASC&startAt=0&endAt=5
+
+//BASE DE DATOS: database-2
+// INCLUYE LIKE E IN
+apirest.com/countries?columnas=id_country,name_country,initial_code,digit_dialcode,id_code_country&relTablas=codes,dialcodes&relCampos=country,code,dialcode&linkTo=id_code_country,name_country,id_country&operadorRelTo==,like,in&valueTo=5_%m%_104,94,88&operadorLogicoTo=OR,OR&orderBy=id_country&orderMode=ASC
+
+//BASE DE DATOS: database-2
+// INCLUYE BETWEEN
+apirest.com/countries?columnas=id_country,name_country,initial_code,digit_dialcode,id_code_country&relTablas=codes,dialcodes&relCampos=country,code,dialcode&linkTo=id_code_country,name_country,id_country,id_country&operadorRelTo==,like,in,between&valueTo=5_%m%_104,94,88_90,100&operadorLogicoTo=OR,OR,AND&orderBy=id_country&orderMode=ASC&startAt=0&endAt=50

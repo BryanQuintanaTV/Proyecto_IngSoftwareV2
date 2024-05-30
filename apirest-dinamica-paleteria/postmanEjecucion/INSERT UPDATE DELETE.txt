@@ -1,0 +1,49 @@
+URL INSERT: apirest.com/courses
+body INSERT
+{
+    "title_course": "Prueba sanitizar 22 de Agregar", 
+    "description_course": "Esto es una prueba", 
+    "id_instructor_course":4, 
+    "image_course": "/recursos/imagenes/uno.png", 
+    "price_course": 0.45, 
+    "date_create_course" : "2020-10-10"
+}
+
+
+URL UPDATE: apirest.com/courses
+body UPDATE
+{
+	"title_course": "Prueba update 23 de EYETY NUM REG LOCALIZADOS", 
+	"description_course": "Esto es una prueba PUT", 
+	"id_instructor_course": 3, 
+	"image_course": "/recursos/imagenes/dos.png", 
+	"price_course": 10.45, 
+	"date_create_course": "2020-10-11" 
+}
+
+header UPDATE
+id = id_course
+idValor = 514
+
+URL DELETE : apirest.com/courses
+body DELETE
+{
+	"id_course": 114
+}
+
+NUEVO USUARIO:
+URL: http://apirest.com/instructors?registro=true&subFijo=instructor
+
+BODY: 
+{
+    "name_instructor":"PRUEBA POSTMAN",
+	"email_instructor": "luis@gmail.com", 
+	"password_instructor": 123456 
+}
+
+LOGUEO
+http://apirest.com/instructors?loguin=true&subFijo=instructor
+{
+	"email_instructor": "luis@gmail.com", 
+	"password_instructor": 123456 
+}

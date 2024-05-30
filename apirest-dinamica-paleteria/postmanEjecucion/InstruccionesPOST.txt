@@ -1,0 +1,8 @@
+{
+    "title_course": "Prueba20 de Agregar", 
+    "description_course": "Esto es una prueba", 
+    "id_instructor_course":4, 
+    "image_course": "/recursos/imagenes/uno.png", 
+    "price_course": 0.45, 
+    "date_create_course" : "2020-10-10"
+}
