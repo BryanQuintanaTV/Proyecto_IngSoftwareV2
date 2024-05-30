@@ -3,7 +3,7 @@
 
 ### Connection Details (admin)
 * <b>username</b> = `` doadmin ``
-* <b>password</b> = `` AVNS_2nslvr5olbPyLvWJh7x hide ``
+* <b>password</b> = `` AVNS_2nslvr5olbPyLvWJh7x ``
 * <b>host</b> = `` db-mysql-nyc3-25007-do-user-15116273-0.c.db.ondigitalocean.com ``
 * <b>port</b> = `` 25060 ``
 * <b>database</b> = `` paletería ``
