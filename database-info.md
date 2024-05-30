@@ -12,15 +12,16 @@
 <br>
 
 #### Click on the + icon to create a new connection to the database.
-![alt text](/database_info_images/image1.png)
+<img src="/database_info_images/image1.png" alt="" height="300px">
+<br>
 
 #### Now We introduce it into the fields
-![alt text](/database_info_images/image2.png)
+<img src="/database_info_images/image2.png" alt="" height="300px">
+<br>
 
 #### And by clicking on the “ok” button the connection should be established.
-
-![alt text](/database_info_images/image3.png)
+<img src="/database_info_images/image3.png" alt="" height="300px">
+<br>
 
 #### And now you have access to the database
-
-![alt text](/database_info_images/image4.png)
+<img src="/database_info_images/image4.png" alt="" height="300px">
