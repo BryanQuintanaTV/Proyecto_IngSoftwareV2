@@ -2,6 +2,17 @@
   class Orden {
     constructor() {
       this.productos = [];
+      this.ordenDetalle = document.querySelector(".orden_detalle");
+    
+      this.ordenDetalle.addEventListener("click", (event) => {
+        if (event.target && event.target.matches(".articulo_btn img")) {
+            const button = event.target.closest(".articulo_btn");
+            const index = button.dataset.index;
+            console.log("Eliminando producto de la orden");
+            console.log("INDEX", index);
+            this.eliminarProducto(index);
+        }
+    });
     }
 
     agregarProducto(producto) {
@@ -17,15 +28,18 @@
     }
 
     actualizarVista() {
+      const ordenDetalle = this.ordenDetalle;
+      console.log('Entro a la funcion actualizarVista');
       ordenDetalle.innerHTML = "";
       this.productos.forEach((producto, index) => {
+        console.log('Entro al foreach');
         const productDiv = document.createElement("div");
         productDiv.classList.add("orden_detalle_articulo");
         productDiv.innerHTML = `
           <p class="articulo_name">${producto.name}</p>
           <p class="articulo_cantidad">x<span>${producto.cantidad}</span></p>
           <p class="articulo_extras activo">${producto.extras}</p>
-          <button class="articulo_btn" data-index="${index}"><img src="${
+          <button class="articulo_btn" id="delete_articulo_btn" data-index="${index}"><img src="${
           producto.deleteIconSrc
         }" alt=""></button>
           <p class="articulo_total">$<span>${producto.precio.toFixed(
@@ -35,7 +49,18 @@
         `;
         ordenDetalle.appendChild(productDiv);
       });
+      
     }
+
+    /*
+    delete_product = document.getElementById("delete_articulo_btn");
+      if (typeof delete_product !== "undefined" && delete_product !== null) {
+        delete_product.addEventListener("click", () => {
+            console.log("Eliminando producto de la orden");
+            console.log("INDEX", delete_product.dataset.index);
+        });
+    } 
+    */
 
     actualizarTotal() {
       const total = this.productos.reduce(

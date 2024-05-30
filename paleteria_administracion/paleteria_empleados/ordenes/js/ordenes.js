@@ -1,7 +1,7 @@
 window.addEventListener("load", async () => {
 
   // Verificar si el sessionStorage contiene el valor esperado
-  if (sessionStorage.getItem('tipoUser') == "cajero") {
+  if (sessionStorage.getItem('tipoUser') == "cajero" || sessionStorage.getItem('tipoUser') == "admin") {
     // Si el usuario es un cajero, entonces se le permite el acceso a la página
 
     /* Se ejecute primero */
@@ -84,21 +84,31 @@ window.addEventListener("load", async () => {
     }
   }
 
-  /* Se ejecute despues */
 
+  /********************************************************************
+   *  Una vez que se han cargado los productos, se procede a cargar el grid
+   ********************************************************************/
+  
   const grid = new Muuri(".grid", {
     layout: {
       rounding: false,
     },
   });
 
+  /********************************************************************
+   *  Cuando se carga el grid, se procede a cargar los productos
+   ********************************************************************/
+  
   grid.refreshItems().layout();
   console.log("los productos se han cargado");
   let div_loader = document.getElementById("loader-container");
   div_loader.classList.add("loaded");
   document.getElementById("grid").classList.add("imagenes-cargadas");
+  
+ /********************************************************************
+  *  Agregamos los listener de los enlaces para filtrar por categoria.
+  ********************************************************************/
 
-  // Agregamos los listener de los enlaces para filtrar por categoria.
   const enlaces = document.querySelectorAll("#categorias a");
 
   enlaces.forEach((elemento) => {
@@ -114,7 +124,11 @@ window.addEventListener("load", async () => {
     });
   });
 
-  //Agregamos listener para las imagenes
+ 
+
+  /********************************************************************
+   *  Traer los id de los botones, si tienen tipos, agregables, quitables o tamaños
+   ********************************************************************/
 
   const overlay = document.getElementById("overlay");
   let overlayPantalla = document.getElementById("overlay_opciones_pantalla");
@@ -122,6 +136,10 @@ window.addEventListener("load", async () => {
   let overlayOpcionesAgregable = document.getElementById("overlay_opciones_add");
   let overlayOpcionesQuitable = document.getElementById("overlay_opciones_no");
   let overlayOpcionesSize = document.getElementById("overlay_opciones_size");
+
+  /********************************************************************
+   *  Traer los id de los div donde se mostraran los tipos, agregables, quitables o tamaños
+   ********************************************************************/
 
   let overlayPantalla_tipos = document.getElementById("overlay_opciones_pantalla_tipos");
   let overlayPantalla_agregables = document.getElementById("overlay_opciones_pantalla_add");
@@ -133,10 +151,14 @@ window.addEventListener("load", async () => {
   let nameProduct;
   let valor;
 
+  let ordenCreada = false;
+  let id_orden, quantity = 1;
 
-  /*
-    Menu cuando se selecciona un producto del menu
-  */
+  let delete_product;
+  /********************************************************************
+   *  Overlay cuando se selecciona un producto del menu
+   ********************************************************************/
+  const orden = new Orden();
   document.querySelectorAll(".grid .item button").forEach((elemento) => {
     elemento.addEventListener("click", () => {
       const ruta = elemento.parentNode.querySelector("img.articulo").src;
@@ -145,7 +167,7 @@ window.addEventListener("load", async () => {
       const idProducto = elemento.parentNode.parentNode.dataset.idProducto;
 
       //Se inicializa una nueva instancia de la clase Orden
-      const orden = new Orden();
+      
       nuevoProducto = {};
       let btnAdd = document.getElementById("addBtn");
       btnAdd.removeAttribute("disabled");
@@ -254,7 +276,7 @@ window.addEventListener("load", async () => {
 
       overlayPantalla.addEventListener('click', (evento) => {
         console.log(evento.target.value, "lol", "Valor de boton de tipo", valor);
-  
+        
         // Agregar producto a la orden
         nuevoProducto = {
           idProducto: nameProduct,
@@ -294,9 +316,28 @@ window.addEventListener("load", async () => {
       document.querySelector("#overlay .fondo_overlay").src = ruta;
       // document.querySelector('#overlay .descripcion').innerHTML = idProducto;
       //al hacer click a algun boton de overlay_opciones_pantalla obtener el value de ese boton
+      
+      
+      newProducto = {
+        name: "NOMBRE TEST",
+        idProducto: nameProduct,
+        cantidad: quantity,
+        extras: "No extras",
+        precio: 7.99,
+        imgSrc: "../../../../assets/images/orden_detail.svg",
+        deleteIconSrc: "../../../../assets/icons/delete_icon.svg"
+      };
 
       
     });
+  });
+
+  let addOrder = document.getElementById("addBtn");
+  addOrder.addEventListener("click", () => {
+    console.log("Agregando producto a la orden");
+    quantity++;
+    orden.agregarProducto(newProducto);
+    
   });
 
   // overlayOpcionesTipo al hacer click en el boton, imprimir el value de ese boton
